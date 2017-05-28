@@ -1,0 +1,8 @@
+[submodule "pyta"]
+path = pyta
+url = git@github.com:ostrokach/pyta.git
+
+[submodule "website"]
+path = website
+url = https://github.com/pyta-uoft/website.git 
+
