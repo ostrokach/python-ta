@@ -1,5 +1,43 @@
 # 2017 Content Developer for PythonTA
 
+## Week 2 (May 28 - June 5)
+
+### ToDos from previous week
+
+- > Maybe replace `>>> python_ta.doc('E9999')` with `>>> python_ta.doc('E9998')` in the README...
+  - Actually, it's already correct. I got confused because the `E9998` error is displayed last. `E9999` is the error that the example is trying to demonstrate.
+
+- > Problems with PyTA error messages and code highlighting for `E9997 (forbidden-global-variables)`
+  - Created an issue on GitHub: pyta-uoft/pyta#223
+
+- > PyCharm plugin with a tooltop for a particular error message and
+  - Created an issue on GitHub: pyta-uoft/pyta#229
+
+### Progress
+
+- Started going over and improving error descriptions on the website:
+  - [Pull request](https://github.com/pyta-uoft/website/pull/54)
+  - [Spreadsheet to keep track of progress](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing)
+
+### Questions / Issues
+
+- Max line length in index.md?
+  - My code editor automatically wraps text at a specified line length, so I would prefer 1 line per paragraph.
+  - Can stick to 80 char if that's better for everyone else.
+- Add a test to make sure there are no dead links?
+  - May be useful now that we are including links external resources.
+  - Can open issue on GitHub website?
+- Different colours for warnings and errors?
+  - Some errors are much worse than others (syntax errors vs. "bad smells"). Maybe this should be indicated somehow? (not sure)
+- Make the title for each error "clickable"
+  - This is standard practice in e.g GitHub README.md rendering.
+  - Could generate a link for a particular section by clicking on a title.
+- Bullet lists not being parsed
+  - Currently, lists appear as paragraphs in the rendered webpage.
+  - i.e `<ul><li>...</li></ul>` look similar to `<o>...</p>`, without bullet points, etc.
+  - For example [E0001](http://kimstg:8090/#E0001) is acually a nested list with two sections: *Python error message: "Missing parentheses in call to 'print'"* and *Python error message: "SyntaxError: invalid syntax"*
+
+
 ## Week 1 (May 22 - May 28)
 
 ### Install PyTA
