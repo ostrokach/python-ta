@@ -1,5 +1,18 @@
 # 2017 Content Developer for PythonTA
 
+## Week 2 (June 5 - June 12)
+
+### ToDos from previous week
+
+- > Add a test to make sure there are no dead links?
+  - https://github.com/pyta-uoft/website/issues/55
+
+- > List elements are not styled correctly
+  - https://github.com/pyta-uoft/website/issues/56
+
+### Progress
+
+
 ## Week 2 (May 28 - June 5)
 
 ### ToDos from previous week
