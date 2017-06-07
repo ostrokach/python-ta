@@ -8,13 +8,14 @@
 
 ### ToDos from previous week
 
-- Add a test to make sure there are no dead links?
-  - https://github.com/pyta-uoft/website/issues/55
-- List elements are not styled correctly.
-  - https://github.com/pyta-uoft/website/issues/56
-- Address issues with the update to **Improper Python usage** section on the website:
-  - Website: https://github.com/pyta-uoft/website/pull/54
-  - Spreadsheet: https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing
+> Add a test to make sure there are no dead links.
+- Opened issue: https://github.com/pyta-uoft/website/issues/55
+
+> List elements are not styled correctly.
+- Opened issue: https://github.com/pyta-uoft/website/issues/56
+
+> Address issues with the update to **Improper Python usage** section on the website:
+- Added commits to PR: https://github.com/pyta-uoft/website/pull/54
 
 ### Progress
 
