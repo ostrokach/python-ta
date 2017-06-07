@@ -26,7 +26,9 @@
 
 ### Questions
 
-- Move PyTA website into a `docs` folder in the PyTA repo?
+- Is a single commit per error message better?
+- How to keep track of concurrent changes in PyTA and website repos?
+  - Move PyTA website into a `docs` folder in the PyTA repo?
 
 
 ## Week 2 (May 28 - June 5)
