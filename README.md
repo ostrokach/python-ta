@@ -1,16 +1,27 @@
 # 2017 Content Developer for PythonTA
 
-## Week 2 (June 5 - June 12)
+## Week 3 (June 5 - June 12)
 
 ### ToDos from previous week
 
-- > Add a test to make sure there are no dead links?
+- Add a test to make sure there are no dead links?
   - https://github.com/pyta-uoft/website/issues/55
-
-- > List elements are not styled correctly
+- List elements are not styled correctly.
   - https://github.com/pyta-uoft/website/issues/56
+- Changes to *Improper Python usage* errors:
+  - Website: https://github.com/pyta-uoft/website/pull/54
+  - Spreadsheet: https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing
 
 ### Progress
+
+- Type errors
+  - Website: https://github.com/pyta-uoft/website/pull/57
+  - PyTA: https://github.com/pyta-uoft/pyta/pull/243
+  - Spreadsheet: https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing
+
+### Questions
+
+- Move PyTA website into a `docs` folder in the PyTA repo?
 
 
 ## Week 2 (May 28 - June 5)
