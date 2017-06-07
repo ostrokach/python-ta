@@ -1,5 +1,9 @@
 # 2017 Content Developer for PythonTA
 
+- [Week 3](#week-3-june-5---june-12)
+- [Week 2](#week-2-may-28---june-5)
+- [Week 1](#week-1-may-22---may-28)
+
 ## Week 3 (June 5 - June 12)
 
 ### ToDos from previous week
