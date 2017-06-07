@@ -1,0 +1,153 @@
+error_code,error_summary,error_description
+Improper Python usage,,
+E0601,Used before assignment,
+E0602,Undefined variable,
+W0631,Undefined loop variable,
+E0103,Not in loop,
+E0104,Return outside function,
+W0101,Unreachable,
+W0109,Duplicate key,
+Type errors,,
+E1101,No member,
+E1102,Not callable,
+E1111,Assignment from no return,
+E1120,No value for parameter,
+E1121,Too many function args,
+E1126,Invalid sequence index,
+E1127,Invalid slice index,
+E1128,Assignment from None,
+E1130,Invalid unary operand type,
+E1131,Unsupported binary operation,
+E1135,Unsupported membership test,
+E1136,Unsubscriptable object,
+E0632,Unbalanced tuple unpacking,
+E0633,Unpacking non-sequence,
+Code complexity,,
+R0102,Simplifiable if statement,
+C0113,Unneeded not,
+C0121,Singleton comparison,
+W0125,Using constant test,
+R0912,Too many branches,
+R0101,Too many nested blocks,
+R0913,Too many arguments,
+R0914,Too many locals,
+R0915,Too many statements,
+W0612,Unused variable,
+W0613,Unused argument,
+W0104,Pointless statement,
+W0107,Unnecessary pass,
+Documentation and naming,,
+C0111,Missing Docstring,
+C0112,Empty Docstring,
+C0102,Blacklisted name,
+C0103,Invalid Name,
+E0102,Function redefined,
+E0108,Duplicate argument name,
+W0621,Redefined outer name,
+W0622,Redefined builtin,
+Imports,,
+E9999,Forbidden imports,
+E0401,Import error,
+E0611,No name in module,
+W0406,Import self,
+W0404,Reimported,
+W0401,Wildcard import,
+C0411,Wrong import order,
+C0413,Wrong import position,
+C0412,Ungrouped imports,
+C0410,Multiple imports,
+W0611,Unused import,
+Classes and objects,,
+R0902,Too many instance attributes,
+W0222,Different method signature,
+E0101,Return in `__init__`,
+W0212,Protected member access,
+W0233,Bad parent init,
+W0201,Attribute defined outside init,
+E0203,Access to member before definition,
+E0202,Method hidden,
+E0302,Unexpected special method signature,
+E0239,Inheriting from a non-class,
+E0241,Duplicate bases,
+E0211,No method argument,
+E0213,`self` as the first argument,
+R0201,No self use,
+W0211,Bad static member,
+Exceptions,,
+W0702,Bare exception,
+W0703,Exception is too generic,
+W0705,Duplicate except blocks,
+E0701,Bad exception order,
+W0711,Binary op exception,
+E0704,Misplaced bare raise,
+E0702,Raising bad type,
+E0710,Raising non-exception,
+E0711,NotImplemented raised,
+E0712,Catching non-exception,
+Custom errors {#custom},,
+E9998,Forbidden IO function,
+E9996,Always returning in a loop,
+E9991,Dynamic Execution,
+Miscellaneous,,
+E1305,Too many format args,
+E1306,Too few format args,
+E1310,Bad str strip call,
+W1303,Missing format argument key,
+W1305,Format combined specification,
+W1401,Anomalous backslash in string,
+W1503,Redundant unittest assert,
+C0123,Unidiomatic type check,
+W0102,Dangerous default value,
+W0199,Assert on tuple,
+Syntax errors {#custom},,
+E0001,Syntax Error,
+Missing,,
+C0305,:trailing-newlines (C0305): *Trailing newlines*,Used when there are trailing blank lines in a file. This message belongs to the format checker.
+F0001,:fatal (F0001):,Used when an error occurred preventing the analysis of a module (unable to find it for instance). This message belongs to the master checker.
+I0001,:raw-checker-failed (I0001): *Unable to run raw checkers on built-in module %s*,Used to inform that a built-in module has not been checked using the raw checkers. This message belongs to the master checker.
+W0106,":expression-not-assigned (W0106): *Expression ""%s"" is assigned to nothing*",Used when an expression that is not a function call is assigned to nothing. Probably something else was intended. This message belongs to the basic checker.
+W0301,:unnecessary-semicolon (W0301): *Unnecessary semicolon*,"Used when a statement is ended by a semi-colon ("";""), which isn't necessary (that's python, not C ;). This message belongs to the format checker."
+E0236,":invalid-slots-object (E0236): *Invalid object %r in __slots__, must contain only non empty strings*",Used when an invalid (non-string) object occurs in __slots__. This message belongs to the classes checker.
+I0021,:useless-suppression (I0021): *Useless suppression of %s*,"Reported when a message is explicitly disabled for a line or a block of code, but never triggered. This message belongs to the master checker."
+E0110,:abstract-class-instantiated (E0110): *Abstract class %r with abstract methods instantiated*,Used when an abstract class with `abc.ABCMeta` as metaclass has abstract methods and is instantiated. This message belongs to the basic checker.
+F0010,:parse-error (F0010): *error while code parsing: %s*,Used when an exception occured while building the Astroid representation which could be handled by astroid. This message belongs to the master checker.
+E0238,:invalid-slots (E0238): *Invalid __slots__ object*,"Used when an invalid __slots__ is found in class. Only a string, an iterable or a sequence is permitted. This message belongs to the classes checker."
+C0201,:consider-iterating-dictionary (C0201): *Consider iterating the dictionary directly instead of calling .keys()*,"Emitted when the keys of a dictionary are iterated through the .keys() method. It is enough to just iterate through the dictionary itself, as in ""for key in dictionary"". This message belongs to the basic checker."
+E0107,:nonexistent-operator (E0107): *Use of the non-existent %s operator*,"Used when you attempt to use the C-style pre-increment orpre-decrement operator -- and ++, which doesn't exist in Python. This message belongs to the basic checker."
+W0221,:arguments-differ (W0221): *Arguments number differs from %s %r method*,Used when a method has a different number of arguments than in the implemented interface or in an overridden method. This message belongs to the classes checker.
+C0204,:bad-mcs-classmethod-argument (C0204): *Metaclass class method %s should have %s as first argument*,"Used when a metaclass class method has a first argument named differently than the value specified in valid-metaclass-classmethod-first-arg option (default to ""mcs""), recommended to easily differentiate them from regular instance methods. This message belongs to the classes checker."
+E0303,:invalid-length-returned (E0303): *__len__ does not return non-negative integer*,Used when an __len__ method returns something which is not a non-negative integer This message belongs to the classes checker.
+C0321,:multiple-statements (C0321): *More than one statement on a single line*,Used when more than on statement are found on the same line. This message belongs to the format checker.
+C0301,:line-too-long (C0301): *Line too long (%s/%s)*,Used when a line is longer than a given number of characters. This message belongs to the format checker.
+E0703,":bad-exception-context (E0703): *Exception context set to something which is not an exception, nor None*","Used when using the syntax ""raise ... from ..."", where the exception context is not an exception, nor None. This message belongs to the exceptions checker. It can't be emitted when using Python < 3.0."
+R0801,:duplicate-code (R0801): *Similar lines in %s files*,Indicates that a set of similar lines has been detected among multiple file. This usually means that the code should be refactored to avoid this duplication. This message belongs to the similarities checker.
+C0203,:bad-mcs-method-argument (C0203): *Metaclass method %s should have %s as first argument*,"Used when a metaclass method has a first agument named differently than the value specified in valid-classmethod-first-arg option (default to ""cls""), recommended to easily differentiate them from regular instance methods. This message belongs to the classes checker."
+C0326,:bad-whitespace (C0326): *%s space %s %s %s*,"Used when a wrong number of spaces is used around an operator, bracket or block opener. This message belongs to the format checker."
+E1133,:not-an-iterable (E1133): *Non-iterable value %s is used in an iterating context*,Used when a non-iterable value is used in place whereiterable is expected This message belongs to the iterable_check checker.
+I0013,:file-ignored (I0013): *Ignoring entire file*,Used to inform that the file will not be checked This message belongs to the master checker.
+R0203,:no-staticmethod-decorator (R0203): *Consider using a decorator instead of calling staticmethod*,Used when a static method is defined without using the decorator syntax. This message belongs to the classes checker.
+W0223,:abstract-method (W0223): *Method %r is abstract in class %r but is not overridden*,Used when an abstract method (i.e. raise NotImplementedError) is not overridden in concrete class. This message belongs to the classes checker.
+E1134,:not-a-mapping (E1134): *Non-mapping value %s is used in a mapping context*,Used when a non-mapping value is used in place wheremapping is expected This message belongs to the iterable_check checker.
+R0202,:no-classmethod-decorator (R0202): *Consider using a decorator instead of calling classmethod*,Used when a class method is defined without using the decorator syntax. This message belongs to the classes checker.
+W1202,:logging-format-interpolation (W1202): *Use % formatting in logging functions and pass the % parameters as arguments*,"Used when a logging statement has a call form of ""logging.<logging method>(format_string.format(format_args...))"". Such calls should use % formatting instead, but leave interpolation to the logging function by passing the parameters as arguments. This message belongs to the logging checker."
+I0012,:locally-enabled (I0012): *Locally enabling %s (%s)*,Used when an inline option enables a message or a messages category. This message belongs to the master checker.
+I0022,":deprecated-pragma (I0022): *Pragma ""%s"" is deprecated, use ""%s"" instead*","Some inline pylint options have been renamed or reworked, only the most recent form should be used. NOTE:skip-all is only available with pylint >= 0.26 This message belongs to the master checker."
+C0302,:too-many-lines (C0302): *Too many lines in module (%s/%s)*,"Used when a module has too much lines, reducing its readability. This message belongs to the format checker."
+C0304,:missing-final-newline (C0304): *Final newline missing*,Used when the last line in a file is missing a newline. This message belongs to the format checker.
+I0011,:locally-disabled (I0011): *Locally disabling %s (%s)*,Used when an inline option disables a message or a messages category. This message belongs to the master checker.
+F0002,:astroid-error (F0002): *%s: %s*,Used when an unexpected error occurred while building the Astroid representation. This is usually accompanied by a traceback. Please report such errors ! This message belongs to the master checker.
+C0202,:bad-classmethod-argument (C0202): *Class method %s should have %s as first argument*,"Used when a class method has a first argument named differently than the value specified in valid-classmethod-first-arg option (default to ""cls""), recommended to easily differentiate them from regular instance methods. This message belongs to the classes checker."
+I0010,:bad-inline-option (I0010): *Unable to consider inline option %r*,Used when an inline option is either badly formatted or can't be used inside modules. This message belongs to the master checker.
+E0012,:bad-option-value (E0012): *Bad option value %r*,Used when a bad value for an inline option is encountered. This message belongs to the master checker.
+I0020,:suppressed-message (I0020): *Suppressed %s (from line %d)*,"A message was triggered on a line, but suppressed explicitly by a disable= comment in the file. This message is not generated for messages that are ignored due to configuration settings. This message belongs to the master checker."
+C0325,:superfluous-parens (C0325): *Unnecessary parens after %r keyword*,"Used when a single item in parentheses follows an if, for, or other keyword. This message belongs to the format checker."
+F0202,:method-check-failed (F0202): *Unable to check methods signature (%s / %s)*,Used when Pylint has been unable to check methods signature compatibility for an unexpected reason. Please report this kind if you don't make sense of it. This message belongs to the classes checker.
+E0237,:assigning-non-slot (E0237): *Assigning to attribute %r not defined in class slots*,Used when assigning to an attribute not defined in the class slots. This message belongs to the classes checker.
+W0312,:mixed-indentation (W0312): *Found indentation with %ss instead of %ss*,Used when there are some mixed tabs and spaces in a module. This message belongs to the format checker.
+W0311,":bad-indentation (W0311): *Bad indentation. Found %s %s, expected %s*",Used when an unexpected number of indentation's tabulations or spaces has been found. This message belongs to the format checker.
+E0301,:non-iterator-returned (E0301): *__iter__ returns non-iterator*,Used when an __iter__ method returns something which is not an iterable (i.e. has no `__next__` method) This message belongs to the classes checker.
+E0011,:unrecognized-inline-option (E0011): *Unrecognized file option %r*,Used when an unknown inline option is encountered. This message belongs to the master checker.
+E0240,:inconsistent-mro (E0240): *Inconsistent method resolution order for class %r*,Used when a class has an inconsistent method resolutin order. This message belongs to the classes checker.
+E1003,:bad-super-call (E1003): *Bad first argument %r given to super()*,Used when another argument than the current class is given as first argument of the super builtin. This message belongs to the newstyle checker.
+C0330,:bad-continuation (C0330): *Wrong %s indentation%s%s.*,TODO This message belongs to the format checker.
+E1123,:unexpected-keyword-arg (E1123): *Unexpected keyword argument %r in %s call*,Used when a function call passes a keyword argument that doesn't correspond to one of the function's parameter names. This message belongs to the typecheck checker.
