@@ -8,13 +8,13 @@
   - https://github.com/pyta-uoft/website/issues/55
 - List elements are not styled correctly.
   - https://github.com/pyta-uoft/website/issues/56
-- Changes to *Improper Python usage* errors:
+- Address issues with the update to **Improper Python usage** section on the website:
   - Website: https://github.com/pyta-uoft/website/pull/54
   - Spreadsheet: https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing
 
 ### Progress
 
-- Type errors
+- Update **Type errors** section on the website
   - Website: https://github.com/pyta-uoft/website/pull/57
   - PyTA: https://github.com/pyta-uoft/pyta/pull/243
   - Spreadsheet: https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing
