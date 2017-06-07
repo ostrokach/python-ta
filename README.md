@@ -20,8 +20,8 @@
 ### Progress
 
 - Update **Type errors** section on the website
-  - Website: https://github.com/pyta-uoft/website/pull/57
-  - PyTA: https://github.com/pyta-uoft/pyta/pull/243
+  - Website PR: https://github.com/pyta-uoft/website/pull/57
+  - PyTA PR: https://github.com/pyta-uoft/pyta/pull/243
   - Spreadsheet: https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing
 
 ### Questions
