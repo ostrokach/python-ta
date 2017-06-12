@@ -1,8 +1,20 @@
 # 2017 Content Developer for PythonTA
 
+- [Week 3](#week-4-june-12---june-19)
 - [Week 3](#week-3-june-5---june-12)
 - [Week 2](#week-2-may-28---june-5)
 - [Week 1](#week-1-may-22---may-28)
+
+## Week 4 (June 12 - June 19)
+
+### ToDos from previous week
+
+> Change the titles of each entry from "CODE: description" to "Description (CODE)"
+- ...
+
+> Find a link to a website that talks about default parameters
+- ...
+
 
 ## Week 3 (June 5 - June 12)
 
