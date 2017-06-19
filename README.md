@@ -10,10 +10,26 @@
 ### ToDos from previous week
 
 > Change the titles of each entry from "CODE: description" to "Description (CODE)"
-- ...
+- WIP:
 
 > Find a link to a website that talks about default parameters
-- ...
+- WIP:
+
+### Progress
+
+- Update **Code complexity** section of the website:
+  - Website PR: pyta-uoft/website#58
+  - PyTA PR: pyta-uoft/pyta#258
+  - Spreadsheet: https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing
+
+### Questions
+
+- Maybe have everything in alphabetical order and build the table of contents based on tags?
+  - Could have "see also" links below every error.
+- Examples should be more standardized?
+  - Common theme for all examples, e.g. statistics (`sum`, `mean(lst, skip_none=True)`, `count`, ...)?
+  - Examples should have consistent docstrings?
+  - Examples should be mostly correct with regard to other pylint errors (e.g. code discouraged by `R0102` in `C0113`, `C0121`, `W0125`).
 
 
 ## Week 3 (June 5 - June 12)

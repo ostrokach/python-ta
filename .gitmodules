@@ -6,3 +6,6 @@ url = git@github.com:ostrokach/pyta.git
 path = website
 url = https://github.com/pyta-uoft/website.git 
 
+[submodule "pylint"]
+	path = pylint
+	url = https://github.com/PyCQA/pylint.git
