@@ -9,11 +9,8 @@
 
 ### ToDos from previous week
 
-> Minor corrections to previous commits:
+> Address issues in commits for week 3:
 - https://github.com/pyta-uoft/website/pull/57
-
-> Change the titles of each entry from "CODE: description" to "Description (CODE)"
-- https://github.com/pyta-uoft/website/pull/59
 
 > Find a link to a website that talks about default parameters
 - WIP:
@@ -24,6 +21,8 @@
   - [Website PR](https://github.com/pyta-uoft/website/pull/58)
   - [PyTA PR](https://github.com/pyta-uoft/pyta/pull/258)
   - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing)
+- Change the titles of each entry from "CODE: description" to "Description (CODE)"
+  - [Website PR](https://github.com/pyta-uoft/website/pull/59)
 
 ### Questions
 
