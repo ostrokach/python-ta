@@ -9,6 +9,9 @@
 
 ### ToDos from previous week
 
+> Minor corrections to previous commits:
+- https://github.com/pyta-uoft/website/pull/57
+
 > Change the titles of each entry from "CODE: description" to "Description (CODE)"
 - https://github.com/pyta-uoft/website/pull/59
 
