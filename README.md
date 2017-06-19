@@ -21,7 +21,7 @@
   - [Website PR](https://github.com/pyta-uoft/website/pull/58)
   - [PyTA PR](https://github.com/pyta-uoft/pyta/pull/258)
   - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing)
-- Change the titles of each entry from "CODE: description" to "Description (CODE)"
+- Change the titles of each entry from `### CODE: Error description {Tag}` to `### Error description (CODE) {Tag}`"
   - [Website PR](https://github.com/pyta-uoft/website/pull/59)
 
 ### Questions
