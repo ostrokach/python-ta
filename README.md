@@ -10,7 +10,7 @@
 ### ToDos from previous week
 
 > Change the titles of each entry from "CODE: description" to "Description (CODE)"
-- WIP:
+- https://github.com/pyta-uoft/website/pull/59
 
 > Find a link to a website that talks about default parameters
 - WIP:
