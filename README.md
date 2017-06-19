@@ -30,12 +30,12 @@
 
 ### Questions
 
-- Maybe have everything in alphabetical order and build the table of contents based on tags?
-  - Could have "see also" links below every error.
 - Examples should be more standardized?
   - Common theme for all examples, e.g. statistics (`sum`, `mean(lst, skip_none=True)`, `count`, ...)?
   - Examples should have consistent docstrings?
   - Examples should be mostly correct with regard to other pylint errors (e.g. code discouraged by `R0102` in `C0113`, `C0121`, `W0125`).
+- Maybe have everything in alphabetical order and build the table of contents based on tags?
+  - Could have "see also" links below every error.
 
 
 ## Week 3 (June 5 - June 12)
