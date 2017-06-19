@@ -1,9 +1,13 @@
 # 2017 Content Developer for PythonTA
 
-- [Week 3](#week-4-june-12---june-19)
+- [To Do](#to-do)
+- [Week 4](#week-4-june-12---june-19)
 - [Week 3](#week-3-june-5---june-12)
 - [Week 2](#week-2-may-28---june-5)
 - [Week 1](#week-1-may-22---may-28)
+
+## To Do
+
 
 ## Week 4 (June 12 - June 19)
 
