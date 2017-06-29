@@ -8,6 +8,9 @@
 
 ## To Do
 
+- Remove functions in `if ...: return True else: return False` examples
+- Add specific examples for `is None`, `is True`, `is False`
+
 
 ## Week 4 (June 12 - June 19)
 
