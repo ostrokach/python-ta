@@ -11,6 +11,7 @@
 - Remove functions in `if ...: return True else: return False` examples
 - Add specific examples for `is None`, `is True`, `is False`
 
+----
 
 ## Week 4 (June 12 - June 19)
 
@@ -40,6 +41,7 @@
 - Maybe have everything in alphabetical order and build the table of contents based on tags?
   - Could have "see also" links below every error.
 
+----
 
 ## Week 3 (June 5 - June 12)
 
@@ -67,6 +69,7 @@
 - How to keep track of concurrent changes in PyTA and website repos?
   - Move PyTA website into a `docs` folder in the PyTA repo?
 
+----
 
 ## Week 2 (May 28 - June 5)
 
@@ -107,6 +110,7 @@
   - For example [E0001](http://kimstg:8090/#E0001) is acually a nested list with two sections: *Python error message: "Missing parentheses in call to 'print'"* and *Python error message: "SyntaxError: invalid syntax"*
   - Can open an issue on GitHub, or try to fix this myself?
 
+----
 
 ## Week 1 (May 22 - May 28)
 
