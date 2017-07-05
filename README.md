@@ -9,6 +9,14 @@
 
 ----
 
+## Notes
+
+- Consistent documentation for all examples.
+  - Document function? Arguments? Return type?
+
+
+----
+
 ## Week 6 (June 19 - July 5)
 
 ### Progress
@@ -17,8 +25,8 @@
   - [pyta-uoft/website#58](https://github.com/pyta-uoft/website/pull/58) (see commit [`ff58dee`](https://github.com/pyta-uoft/website/pull/58/commits/ff58dee))
   - [pyta-uoft/pyta#282](https://github.com/pyta-uoft/pyta/pull/282)
 - Replace functions with code blocks for errors which do not apply to function arguments (e.g. `if not val <= 0: ...`), and add a better example for singleton comparison error (`if value == None: ...`):
-  - ...
-  - ...
+  - [pyta-uoft/website#60](https://github.com/pyta-uoft/website/pull/58)
+  - [pyta-uoft/pyta#283](https://github.com/pyta-uoft/pyta/pull/282)
 
 ### Questions
 
