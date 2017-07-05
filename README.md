@@ -1,15 +1,22 @@
 # 2017 Content Developer for PythonTA
 
-- [To Do](#to-do)
+- [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
+- [Week 6](#week-6-june-19---july-5)
 - [Week 4](#week-4-june-12---june-19)
 - [Week 3](#week-3-june-5---june-12)
 - [Week 2](#week-2-may-28---june-5)
 - [Week 1](#week-1-may-22---may-28)
 
-## To Do
+----
+
+## Week 6 (June 19 - July 5)
+
+### Progress
 
 - Remove functions in `if ...: return True else: return False` examples
 - Add specific examples for `is None`, `is True`, `is False`
+
+### Questions
 
 ----
 
@@ -90,7 +97,7 @@
   - [Pull request](https://github.com/pyta-uoft/website/pull/54)
   - [Spreadsheet to keep track of progress](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit?usp=sharing)
 
-### Questions / Issues
+### Questions
 
 - Max line length in [index.md](https://github.com/pyta-uoft/website/blob/master/index.md)?
   - My code editor automatically wraps text at a specified line length, so I would prefer 1 line per paragraph.
