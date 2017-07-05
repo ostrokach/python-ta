@@ -13,10 +13,17 @@
 
 ### Progress
 
-- Remove functions in `if ...: return True else: return False` examples
-- Add specific examples for `is None`, `is True`, `is False`
+- Fix pull request from week 4:
+  - [pyta-uoft/website#58](https://github.com/pyta-uoft/website/pull/58) (see commit [`ff58dee`](https://github.com/pyta-uoft/website/pull/58/commits/ff58dee))
+  - [pyta-uoft/pyta#282](https://github.com/pyta-uoft/pyta/pull/282)
+- Replace functions with code blocks for errors which do not apply to function arguments (e.g. `if not val <= 0: ...`), and add a better example for singleton comparison error (`if value == None: ...`):
+  - ...
+  - ...
 
 ### Questions
+
+- Invalid constant name `number`, `number_category`, etc.
+  - Tried inside `if __name__ == '__main__':` block, but get the same error.
 
 ----
 
