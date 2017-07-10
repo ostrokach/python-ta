@@ -17,6 +17,16 @@
 
 ----
 
+## Week 7 (June 5 - July 10)
+
+- Pull request for correcting the lists stylesheet and rephrasing Imports" errors:
+  - [pyta-uoft/website#61](https://github.com/pyta-uoft/website/pull/61)
+  - [pyta-uoft/pyta#285](https://github.com/pyta-uoft/pyta/pull/285)
+- Reconsider changing function into inline code?:
+  - [pyta-uoft/pyta#283](https://github.com/pyta-uoft/pyta/pull/283)
+
+----
+
 ## Week 6 (June 19 - July 5)
 
 ### Progress
