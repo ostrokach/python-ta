@@ -1,0 +1,10 @@
+{
+  "verbose": true,
+  "ignore": [
+    ".git",
+    "node_modules",
+    "website/gen"
+  ],
+  "ext": "md,py,css,js",
+  "exec": "./scripts/rebuild_website.sh"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "python-ta",
+  "version": "0.0.1",
+  "description": "Python TA Contents Developer",
+  "main": "app.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "file-watch": "nodemon",
+    "bs-server": "browser-sync start -c bs-config.js && nodemon",
+    "dev": "concurrently --kill-others \"npm run file-watch\" \"npm run bs-server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ostrokach/python-ta.git"
+  },
+  "author": "Alexey Strokach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ostrokach/python-ta/issues"
+  },
+  "homepage": "https://github.com/ostrokach/python-ta#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  }
+}
