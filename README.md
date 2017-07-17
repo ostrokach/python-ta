@@ -1,6 +1,8 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
+- [Week 8](#week-8-july-10---july-17)
+- [Week 7](#week-7-july-5---july-10)
 - [Week 6](#week-6-june-19---july-5)
 - [Week 4](#week-4-june-12---june-19)
 - [Week 3](#week-3-june-5---june-12)
@@ -15,7 +17,7 @@
   - Document function? Arguments? Return type?
 
 
-## Week 8
+## Week 8 (July 10 - July 17)
 
 ### Progress
 
@@ -33,7 +35,7 @@
 
 ----
 
-## Week 7 (June 5 - July 10)
+## Week 7 (July 5 - July 10)
 
 - Pull request for correcting the lists stylesheet and rephrasing Imports" errors:
   - [pyta-uoft/website#61](https://github.com/pyta-uoft/website/pull/61)
