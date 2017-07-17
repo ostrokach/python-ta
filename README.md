@@ -15,6 +15,22 @@
   - Document function? Arguments? Return type?
 
 
+## Week 8
+
+### Progress
+
+- [website PR](https://github.com/pyta-uoft/website/pull/62)
+- [PyTA PR](https://github.com/pyta-uoft/pyta/pull/288)
+- I still maybe need another week to finish up this PR? I'm mostly happy with the changes that have been made already, but there are some errors that I still want to update.
+- What needs to be done for older PRs?
+
+### Questions
+
+- OK to have links to error messages in inline format? For example, `[E1120](#E1120)`?
+- Why is `super()` not used in CSC148?
+- **Redundant unittest assert** - Examples are iffy because they don't import any code to be tested. But importing anything would probably fail unit tests?
+- Syntax errors (at the end) are given as Python code blocks rather than being imported from a file.
+
 ----
 
 ## Week 7 (June 5 - July 10)
