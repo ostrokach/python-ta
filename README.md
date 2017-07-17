@@ -19,6 +19,10 @@
 
 ## Week 8 (July 10 - July 17)
 
+### Previous commits
+
+- [Change example as discussed in meeting](https://github.com/pyta-uoft/pyta/pull/285/commits/da0da7f2b90badeacf5d199fdf0c64942054473d)
+
 ### Progress
 
 - [website PR](https://github.com/pyta-uoft/website/pull/62)
