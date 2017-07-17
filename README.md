@@ -17,7 +17,12 @@
   - Document function? Arguments? Return type?
 
 
+## To Do
+
+- Create a file for each syntax error inside a "syntax error" folder.
+
 ## Week 8 (July 10 - July 17)
+
 
 ### Previous commits
 
