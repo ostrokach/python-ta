@@ -1,7 +1,6 @@
-def find_factors(number):
-    cross_list = []
-    for x in x_list:
-        for y in y_list:
-            for z in z_list:
-                if x != y != z:
-                    cross_list.append(x, y, z)
+class MyClass:
+    def __init__(self):
+        self.num = 1
+
+    def set_other_num(self, other_num):
+        self.other_num = other_num
