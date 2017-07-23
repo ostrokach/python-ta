@@ -1,7 +1,7 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
-- [Week 8](#week-9-july-17---july-24)
+- [Week 9](#week-9-july-17---july-24)
 - [Week 8](#week-8-july-10---july-17)
 - [Week 7](#week-7-july-5---july-10)
 - [Week 6](#week-6-june-19---july-5)
@@ -30,7 +30,7 @@
   - [pyta-uoft/website#63](https://github.com/pyta-uoft/website/pull/63)
   - [pyta-uoft/pyta#295](https://github.com/pyta-uoft/pyta/pull/295)
   - Moved error examples into a separate `syntax_errors` folder.
-  - Split 'Syntax errors' into two sections: "Syntax Error (E0001) {#E0001}" with subsections *1. SyntaxError: Missing parentheses in call to 'print'*, *2. SyntaxError: can't assign to literal*, *3. SyntaxError: invalid syntax* and "Indentation Error (E0002) {#E0002}" with subsections *1. IndentationError: unindent does not match any outer indentation level* and *2. IndentationError: unexpected indent*.
+  - Split 'Syntax errors' into two sections: **Syntax Error (E0001) {#E0001}** with subsections *1. SyntaxError: Missing parentheses in call to 'print'*, *2. SyntaxError: can't assign to literal*, *3. SyntaxError: invalid syntax* and **Indentation Error (E0002) {#E0002}** with subsections *1. IndentationError: unindent does not match any outer indentation level* and *2. IndentationError: unexpected indent*.
 - 'Miscellaneous'
   - [pyta-uoft/website#64](https://github.com/pyta-uoft/website/pull/64)
   - [pyta-uoft/pyta#296](https://github.com/pyta-uoft/pyta/pull/296)
