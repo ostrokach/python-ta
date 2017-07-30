@@ -41,6 +41,8 @@
 ### Questions
 
 - Maybe we could run the error code through the PyTA linter and display the error message together with PyTA comment and highlighting?
+- Add travis tests for dead links?
+- Add travis tests for Markdown code style (e.g. using [remark-lint](https://github.com/wooorm/remark-lint)). This includes checks for links that are defined at the bottom but are not used anywhere in the body.
 
 ----
 
