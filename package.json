@@ -7,9 +7,9 @@
     "example": "examples"
   },
   "scripts": {
-    "file-watch": "nodemon",
-    "bs-server": "browser-sync start -c bs-config.js && nodemon",
-    "dev": "concurrently --kill-others \"npm run file-watch\" \"npm run bs-server\""
+    "nodemon": "nodemon",
+    "browser-sync": "browser-sync start -c bs-config.js",
+    "dev": "concurrently --kill-others \"npm run nodemon\" \"npm run browser-sync\""
   },
   "repository": {
     "type": "git",
