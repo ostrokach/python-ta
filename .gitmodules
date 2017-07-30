@@ -4,8 +4,8 @@ url = git@github.com:ostrokach/pyta.git
 
 [submodule "website"]
 path = website
-url = https://github.com/pyta-uoft/website.git 
+url = git@github.com:ostrokach/website.git
 
 [submodule "pylint"]
-	path = pylint
-	url = https://github.com/PyCQA/pylint.git
+path = pylint
+url = https://github.com/PyCQA/pylint.git
