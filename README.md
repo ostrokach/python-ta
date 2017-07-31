@@ -42,7 +42,7 @@
 
 #### Docstrings
 
-Specifications:
+Specifications (from email):
 
 1. [ ] Every function *should* have a docstring.
 2. [ ] One-sentence description should be on same line as """. No space after """.
