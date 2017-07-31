@@ -1,6 +1,7 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
+- [Week 10](#week-9-july-24---july-31)
 - [Week 9](#week-9-july-17---july-24)
 - [Week 8](#week-8-july-10---july-17)
 - [Week 7](#week-7-july-5---july-10)
@@ -18,17 +19,39 @@
   - Document function? Arguments? Return type?
   - Maybe no return types, since using `@type` and `@rtype` is not often used in Python outside this course?
 
+
 ----
 
-- Different escape sequences in string and byte literals.
-- Table formating with the current style may not be ideal for presenting data (too much horizontal space; table is centered by default).
-  <p align="center"><img width="80%" src="images/escape-sequence-table.png" /></p>
+## Week 10 (July 24 - July 31)
 
-  I reverted to using a code-block instead:
+### Fix issues with previous pull requests
 
-  <p align="center"><img width="80%" src="images/escape-sequence-table-2.png" /></p>
+- [pyta-uoft/pyta#297](https://github.com/pyta-uoft/pyta/pull/297)
+  - Build still failing, although it seems to pass on my local machine?
+- [pyta-uoft/website#63](https://github.com/pyta-uoft/website/pull/63)
+  - Some of the escape sequences only work in string literals. I included those escape sequences in the same table (not two tables like the Python documentation).
+  - Table formating with the current style may not be ideal for presenting data (too much horizontal space; table is centered by default).
+    <p align="center"><img width="80%" src="images/escape-sequence-table.png" /></p>
 
+    Instead, I listed all escape patters in columns:
 
+    <p align="center"><img width="80%" src="images/escape-sequence-table-3.png" /></p>
+
+### In progress
+
+#### Docstrings
+
+Specifications:
+
+1. [ ] Every function *should* have a docstring.
+2. [ ] One-sentence description should be on same line as """. No space after """.
+3. [ ] Function annotations: https://www.python.org/dev/peps/pep-0484/#type-definition-syntax. (Pay special attention to forward references https://www.python.org/dev/peps/pep-0484/#forward-references.)
+4. [ ] Need to import https://docs.python.org/3/library/typing.html. Use List[T], Dict[K, V], and Tuple[T1, T2, T3,...]
+
+#### Travis CI
+
+- [`remark-lint`](https://github.com/wooorm/remark-lint) to lint markdown file (reads `.remarkrc` for tunable parameters).
+- [`linkchecker`](https://wummel.github.io/linkchecker/) to check for dead links.
 
 ----
 
