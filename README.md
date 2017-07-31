@@ -19,7 +19,6 @@
   - Document function? Arguments? Return type?
   - Maybe no return types, since using `@type` and `@rtype` is not often used in Python outside this course?
 
-
 ----
 
 ## Week 10 (July 24 - July 31)
@@ -41,6 +40,13 @@
 
 ### In progress
 
+#### Travis CI
+
+- See [pyta-uoft/website#66](https://github.com/pyta-uoft/website/pull/66).
+- Reconsider making `website` a subfolder in `pyta`?
+  - This way the website could be rebuilt whenever either the examples or the website text get changed.
+  - Don't have to clone `pyta` as a separate step in continuous integration.
+
 #### Docstrings
 
 Specifications (from email):
@@ -51,13 +57,6 @@ Specifications (from email):
 > 4. [ ] Need to import https://docs.python.org/3/library/typing.html. Use List[T], Dict[K, V], and Tuple[T1, T2, T3,...]
 
 Type annotations for variables? ([PEP526](https://www.python.org/dev/peps/pep-0526/))
-
-#### Travis CI
-
-- See [pyta-uoft/website#66](https://github.com/pyta-uoft/website/pull/66).
-- Reconsider making `website` a subfolder in `pyta`?
-  - This way the website could be rebuilt whenever either the examples or the website text get changed.
-  - Don't have to clone `pyta` as a separate step in continuous integration.
 
 ----
 
