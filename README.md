@@ -53,8 +53,7 @@ Type annotations for variables? ([PEP526](https://www.python.org/dev/peps/pep-05
 
 #### Travis CI
 
-- [`remark-lint`](https://github.com/wooorm/remark-lint) to lint markdown file (reads `.remarkrc` for tunable parameters).
-- [`linkchecker`](https://wummel.github.io/linkchecker/) to check for dead links.
+- See [pyta-uoft/website#66](https://github.com/pyta-uoft/website/pull/66).
 - Reconsider making `website` a subfolder in `pyta`?
   - This way the website could be rebuilt whenever either the examples or the website text get changed.
   - Don't have to clone `pyta` as a separate step in continuous integration.
