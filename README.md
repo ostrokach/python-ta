@@ -28,6 +28,7 @@
 
 - [pyta-uoft/pyta#297](https://github.com/pyta-uoft/pyta/pull/297)
   - Build still failing, although it seems to pass on my local machine?
+  - I think I did rebase on the current PyTA `master` branch?
 
 - [pyta-uoft/website#65](https://github.com/pyta-uoft/website/pull/65)
   - Some of the escape sequences only work in string literals. I included those escape sequences in the same table (not two tables like the Python documentation).
