@@ -21,8 +21,10 @@
 ----
 
 - Different escape sequences in string and byte literals.
-- Table formating in currecnt style has too much horizonal spacing, and centers the table by default.
-  ![escape sequence table](images/escape-sequence-table.png)
+- Table formating with the current style may not be ideal for presenting data (too much horizontal space; table is centered by default).
+  <img width="60%" src="images/escape-sequence-table.png" />
+- hello world
+
 
 ----
 
