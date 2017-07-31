@@ -44,15 +44,20 @@
 
 Specifications (from email):
 
-1. [ ] Every function *should* have a docstring.
-2. [ ] One-sentence description should be on same line as """. No space after """.
-3. [ ] Function annotations: https://www.python.org/dev/peps/pep-0484/#type-definition-syntax. (Pay special attention to forward references https://www.python.org/dev/peps/pep-0484/#forward-references.)
-4. [ ] Need to import https://docs.python.org/3/library/typing.html. Use List[T], Dict[K, V], and Tuple[T1, T2, T3,...]
+> 1. [ ] Every function *should* have a docstring.
+> 2. [ ] One-sentence description should be on same line as """. No space after """.
+> 3. [ ] Function annotations: https://www.python.org/dev/peps/pep-0484/#type-definition-syntax. (Pay special attention to forward references https://www.python.org/dev/peps/pep-0484/#forward-references.)
+> 4. [ ] Need to import https://docs.python.org/3/library/typing.html. Use List[T], Dict[K, V], and Tuple[T1, T2, T3,...]
+
+Type annotations for variables? ([PEP526](https://www.python.org/dev/peps/pep-0526/))
 
 #### Travis CI
 
 - [`remark-lint`](https://github.com/wooorm/remark-lint) to lint markdown file (reads `.remarkrc` for tunable parameters).
 - [`linkchecker`](https://wummel.github.io/linkchecker/) to check for dead links.
+- Reconsider making `website` a subfolder in `pyta`?
+  - This way the website could be rebuilt whenever either the examples or the website text get changed.
+  - Don't have to clone `pyta` as a separate step in continuous integration.
 
 ----
 
