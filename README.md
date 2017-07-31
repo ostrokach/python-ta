@@ -28,6 +28,7 @@
 
 - [pyta-uoft/pyta#297](https://github.com/pyta-uoft/pyta/pull/297)
   - Build still failing, although it seems to pass on my local machine?
+
 - [pyta-uoft/website#63](https://github.com/pyta-uoft/website/pull/63)
   - Some of the escape sequences only work in string literals. I included those escape sequences in the same table (not two tables like the Python documentation).
   - Table formating with the current style may not be ideal for presenting data (too much horizontal space; table is centered by default).
