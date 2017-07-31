@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>PyTA Help Documentation</title>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="icon" type="image/png" href="./images/favicon.png">
+      <style type="text/css">
+    div.sourceCode { overflow-x: auto; }
+    table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+      margin: 0; padding: 0; vertical-align: baseline; border: none; }
+    table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+    td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+    td.sourceCode { padding-left: 5px; }
+    pre, code { color: #cccccc; background-color: #303030; }
+    code > span.kw { color: #f0dfaf; } /* Keyword */
+    code > span.dt { color: #dfdfbf; } /* DataType */
+    code > span.dv { color: #dcdccc; } /* DecVal */
+    code > span.bn { color: #dca3a3; } /* BaseN */
+    code > span.fl { color: #c0bed1; } /* Float */
+    code > span.ch { color: #dca3a3; } /* Char */
+    code > span.st { color: #cc9393; } /* String */
+    code > span.co { color: #7f9f7f; } /* Comment */
+    code > span.ot { color: #efef8f; } /* Other */
+    code > span.al { color: #ffcfaf; } /* Alert */
+    code > span.fu { color: #efef8f; } /* Function */
+    code > span.er { color: #c3bf9f; } /* Error */
+    code > span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+    code > span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+    code > span.sc { color: #dca3a3; } /* SpecialChar */
+    code > span.vs { color: #cc9393; } /* VerbatimString */
+    code > span.ss { color: #cc9393; } /* SpecialString */
+    code > span.im { } /* Import */
+    code > span.va { } /* Variable */
+    code > span.cf { color: #f0dfaf; } /* ControlFlow */
+    code > span.op { color: #f0efd0; } /* Operator */
+    code > span.bu { } /* BuiltIn */
+    code > span.ex { } /* Extension */
+    code > span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+    code > span.at { } /* Attribute */
+    code > span.do { color: #7f9f7f; } /* Documentation */
+    code > span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+    code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+    code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+    </style>
+    </head>
+<body>
+  <div class="content">
+    <h1 id="title">PyTA Help Documentation</h1>
+<p>Welcome to the <strong>PyTA documentation website</strong>, which describes in greater detail the errors that PyTA checks for. If anything is unclear, incorrect, or missing, please don't hesitate to send an email to [david at cs dot toronto dot edu].</p>
+<h2 id="improper-python-usage">Improper Python usage</h2>
+<p>These errors generally indicate a misuse of variables, control flow, or other Python features in your code.</p>
+<h3 id="E0601">Used before assignment (E0601)</h3>
+<p>This error occurs when you are using a variable before it has been assigned a value.</p>
+<div class="sourceCode" include="E0601_used_before_assignment"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(a)  <span class="co"># Error on this line</span>
+a <span class="op">=</span> <span class="dv">1</span></code></pre></div>
+<h3 id="E0602">Undefined variable (E0602)</h3>
+<p>This error occurs when you are using a variable that has not been defined.</p>
+<div class="sourceCode" include="E0602_undefined_variable"><pre class="sourceCode python"><code class="sourceCode python">var1 <span class="op">=</span> <span class="dv">1</span>
+
+<span class="bu">print</span>(var1)
+<span class="bu">print</span>(var2)  <span class="co"># Error on this line</span></code></pre></div>
+<h3 id="W0631">Undefined loop variable (W0631)</h3>
+<p>This error occurs when a loop variable is used outside the <code>for</code> loop where it was defined.</p>
+<div class="sourceCode" include="W0631_undefined_loop_variable"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">2</span>):
+    <span class="bu">print</span>(i)
+
+<span class="bu">print</span>(i)  <span class="co"># i is undefined outside the loop</span></code></pre></div>
+<p>Python, unlike many other languages (e.g. C, C++, Java), allows loop variables to be accessed outside the loop in which they were defined. This practice is discouraged, however, as it can lead to obscure and hard-to-detect bugs. For more information, see the Eli Bendersky's blog post: <a href="http://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/">The scope of index variables in Python's for loops</a>.</p>
+<h3 id="E0103">Not in loop (E0103)</h3>
+<p>This error occurs when the <code>break</code> or <code>continue</code> keyword is used outside a loop. The keyword <code>break</code> is used to exit a loop early and the keyword <code>continue</code> is used to skip an iteration in a loop. Hence both the keywords only belong inside loops.</p>
+<p>A common source of this error is when the <code>break</code> or <code>continue</code> is not indented properly (it must be indented to be considered part of the loop body).</p>
+<div class="sourceCode" include="E0103_not_in_loop"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add(lst):
+    <span class="co">&quot;&quot;&quot; Calculates the sum of the elements in the given list.</span>
+
+<span class="co">    @type lst: list</span>
+<span class="co">    @rtype: int</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    temp <span class="op">=</span> <span class="dv">0</span>
+    <span class="cf">for</span> item <span class="kw">in</span> lst:
+        temp <span class="op">+=</span> item
+    <span class="cf">break</span>  <span class="co"># Error on this line</span>
+    <span class="cf">return</span> temp</code></pre></div>
+<h3 id="E0104">Return outside function (E0104)</h3>
+<p>This error occurs when a <code>return</code> statement is found outside a function or method. A common source of this error is when the <code>return</code> is not indented properly (it must be indented to be considered part of the loop body).</p>
+<div class="sourceCode" include="E0104_return_outside_function"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add(lst):
+    <span class="co">&quot;&quot;&quot; Calculates the sum of the elements in the given list.</span>
+<span class="co">    @type lst: list</span>
+<span class="co">    @rtype: bool</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    temp <span class="op">=</span> <span class="dv">0</span>
+    <span class="cf">for</span> item <span class="kw">in</span> lst:
+        temp <span class="op">+=</span> item
+
+<span class="cf">return</span> <span class="va">False</span>  <span class="co"># Error on this line</span></code></pre></div>
+<h3 id="W0101">Unreachable (W0101)</h3>
+<p>This error occurs when there is some code after a <code>return</code> or <code>raise</code> statement. This code will never be run, and so either it should be removed, or the function is returning too early.</p>
+<div class="sourceCode" include="W0101_unreachable"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add(lst):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type lst: list</span>
+<span class="co">    @rtype: int</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    temp <span class="op">=</span> <span class="dv">0</span>
+    <span class="cf">for</span> item <span class="kw">in</span> lst:
+        temp <span class="op">+=</span> item
+    <span class="cf">return</span> temp
+    temp <span class="op">+=</span> <span class="dv">1</span>  <span class="co"># Error on this line</span></code></pre></div>
+<h3 id="W0109">Duplicate key (W0109)</h3>
+<p>This error occurs when a dictionary literal sets the same key multiple times.</p>
+<p>Dictionaries map unique keys to values. When different values are assigned to the same key, the last assignment takes precedence. This is rarely what the user wants when they are constructing a dictionary.</p>
+<div class="sourceCode" include="W0109_duplicate_key"><pre class="sourceCode python"><code class="sourceCode python">ex <span class="op">=</span> {
+    <span class="st">&#39;runner1&#39;</span>: <span class="st">&#39;5km&#39;</span>,
+    <span class="st">&#39;runner1&#39;</span>: <span class="st">&#39;7km&#39;</span>
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(ex)  <span class="co"># prints {&#39;runner1&#39;: &#39;7km&#39;}</span></code></pre></div>
+<h2 id="type-errors">Type errors</h2>
+<p>These errors are some of the most common errors we encounter in Python. They generally have to do with using a value of one type where another type is required.</p>
+<h3 id="E1101">No member (E1101)</h3>
+<p>This error occurs when you use dot notation (<code>my_var.x</code>) to access an attribute or to call a method which does not exist for the given object.</p>
+<p>This can happen for both built-in types like <code>str</code>, as well as classes that you define yourself. This error often results in an <strong>AttributeError</strong> when you run your program.</p>
+<div class="sourceCode" include="E1101_no_member"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="st">&#39;hello world&#39;</span>
+<span class="bu">print</span>(x.prop)    <span class="co"># Error: strings don&#39;t have a &#39;prop&#39; attribute</span>
+<span class="bu">print</span>(x.meth())  <span class="co"># Error: strings don&#39;t have a &#39;meth&#39; method</span></code></pre></div>
+<h3 id="E1102">Not callable (E1102)</h3>
+<p>This error occurs when you try to call a value which is not a function, method, or callable object. In the following example, we should not call <code>x()</code> because <code>x</code> refers to an integer, and calling an integer has no meaning.</p>
+<div class="sourceCode" include="E1102_not_callable"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">10</span>
+<span class="bu">print</span>(x())  <span class="co"># Error on this line</span></code></pre></div>
+<h3 id="E1111">Assignment from no return (E1111)</h3>
+<p>This error occurs when you assign a variable to the return value of a function call, but the function never returns anything. This error is similar to <a href="#E1128">E1128</a>.</p>
+<p>In the following example, <code>add_fruit</code> mutates <code>fruit_basket</code> and does not return anything. As a result, <code>new_fruit_basket</code> always gets the value <code>None</code>.</p>
+<div class="sourceCode" include="E1111_assignment_from_no_return"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add_fruit(fruit_basket, fruit):
+    fruit_basket.append(fruit)
+
+
+<span class="kw">def</span> main():
+    fruit_basket <span class="op">=</span> [<span class="st">&#39;apple&#39;</span>, <span class="st">&#39;apple&#39;</span>, <span class="st">&#39;orange&#39;</span>]
+    new_fruit_basket <span class="op">=</span> add_fruit(fruit_basket, <span class="st">&#39;banana&#39;</span>)  <span class="co"># Error on this line</span>
+    <span class="bu">print</span>(new_fruit_basket)  <span class="co"># prints `None`</span></code></pre></div>
+<p>We should either modify <code>add_fruit</code> to return a new list, or call <code>add_fruit</code> without assigning the return value to a variable.</p>
+<h3 id="E1120">No value for parameter (E1120)</h3>
+<p>A function must be called with one argument value per parameter in its header. This error indicates you called a function with too few arguments. In the following example, there should be three values passed to the function instead of two.</p>
+<div class="sourceCode" include="E1120_no_value_for_parameter"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> get_sum(x, y, z):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    Return the sum of x, y and z.</span>
+
+<span class="co">    @type x: int</span>
+<span class="co">    @type y: int</span>
+<span class="co">    @type z: int</span>
+<span class="co">    @rtype: int</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="cf">return</span> x <span class="op">+</span> y <span class="op">+</span> z
+
+get_sum(<span class="dv">1</span>, <span class="dv">2</span>)  <span class="co"># Error on this line</span></code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">get_sum(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</code></pre></div>
+<h3 id="E1121">Too many function args (E1121)</h3>
+<p>A function must be called with one argument value per parameter in its header. This error indicates you called a function with too many arguments.</p>
+<div class="sourceCode" include="E1121_too_many_function_args"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> get_sum(x, y):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    Return the sum of x and y.</span>
+
+<span class="co">    @type x: int</span>
+<span class="co">    @type y: int</span>
+<span class="co">    @rtype: int</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="cf">return</span> x <span class="op">+</span> y
+
+get_sum(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)  <span class="co"># Error on this line</span></code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">get_sum(<span class="dv">1</span>, <span class="dv">2</span>)</code></pre></div>
+<h3 id="E1126">Invalid sequence index (E1126)</h3>
+<p>This error occurs when a list or tuple is indexed using the square bracket notation <code>my_list[...]</code>, but the value of the index is not an integer.</p>
+<p>Remember that the index indicates the <em>position</em> of the item in the list/tuple.</p>
+<div class="sourceCode" include="E1126_invalid_sequence_index"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> [<span class="st">&#39;p&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;A&#39;</span>]
+<span class="bu">print</span>(a[<span class="st">&#39;p&#39;</span>])</code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> [<span class="st">&#39;p&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;A&#39;</span>]
+<span class="bu">print</span>(a[<span class="dv">0</span>])</code></pre></div>
+<h3 id="E1127">Invalid slice index (E1127)</h3>
+<p>This error occurs when a list or tuple is sliced using the square bracket notation <code>my_list[... : ...]</code>, but the two values on the left and right of the colon are not integers.</p>
+<p>Remember that the slice numbers indicate the <em>start</em> and <em>stop</em> positions for the slice in the list/tuple.</p>
+<div class="sourceCode" include="E1127_invalid_slice_index"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> [<span class="st">&#39;p&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;A&#39;</span>]
+<span class="bu">print</span>(a[<span class="st">&#39;p&#39;</span>: <span class="st">&#39;A&#39;</span>])   <span class="co"># Error on this line</span></code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> [<span class="st">&#39;p&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;A&#39;</span>]
+<span class="bu">print</span>(a[<span class="dv">0</span>:<span class="dv">3</span>])</code></pre></div>
+<h3 id="E1128">Assignment from None (E1128)</h3>
+<p>This error occurs when you assign a variable the return value of a function call, but the function always returns <code>None</code>. This error is similar to <a href="#E1111">E1111</a>.</p>
+<p>In the following example, <code>add_fruit</code> always returns <code>None</code>. As a result, <code>new_fruit_basket</code> will always get the value <code>None</code>.</p>
+<div class="sourceCode" include="E1128_assignment_from_none"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add_fruit(fruit_basket, fruit):
+    fruit_basket.append(fruit)
+    <span class="cf">return</span> <span class="va">None</span>
+
+
+<span class="kw">def</span> main():
+    fruit_basket <span class="op">=</span> [<span class="st">&#39;apple&#39;</span>, <span class="st">&#39;apple&#39;</span>, <span class="st">&#39;orange&#39;</span>]
+    new_fruit_basket <span class="op">=</span> add_fruit(fruit_basket, <span class="st">&#39;banana&#39;</span>)  <span class="co"># Error on this line</span>
+    <span class="bu">print</span>(new_fruit_basket)  <span class="co"># prints `None`</span></code></pre></div>
+<h3 id="E1130">Invalid unary operand type (E1130)</h3>
+<p>This error occurs when you use a <a href="https://docs.python.org/3/reference/expressions.html#unary-arithmetic-and-bitwise-operations">unary operator</a> (<code>+</code>, <code>-</code>, <code>~</code>) on an object which does not support this operator. For example, a list does not support negation.</p>
+<div class="sourceCode" include="E1130_invalid_unary_operand_type"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="op">-</span>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</code></pre></div>
+<h3 id="E1131">Unsupported binary operation (E1131)</h3>
+<p>This error occurs when you use a <a href="https://docs.python.org/3/reference/expressions.html#binary-arithmetic-operations">binary arithmetic operator</a> like <code>+</code> or <code>*</code>, but the left and right sides are not compatible types. For example, a dictionary cannot be added to a list.</p>
+<div class="sourceCode" include="E1131_unsupported_binary_operation"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]
+b <span class="op">=</span> {<span class="st">&#39;p&#39;</span>: <span class="dv">1</span>}
+c <span class="op">=</span> a <span class="op">+</span> b  <span class="co"># Error on this line</span></code></pre></div>
+<h3 id="E1135">Unsupported membership test (E1135)</h3>
+<p>This error occurs when you use the membership test <code>a in b</code>, but the type of <code>b</code> does not support membership tests.</p>
+<p>The standard Python types which support membership tests are strings, lists, tuples, and dictionaries.</p>
+<div class="sourceCode" include="E1135_unsupported_membership_test"><pre class="sourceCode python"><code class="sourceCode python">lst <span class="op">=</span> <span class="dv">1132424</span>
+<span class="cf">if</span> <span class="st">&#39;a&#39;</span> <span class="kw">in</span> lst:  <span class="co"># Error on this line</span>
+    <span class="bu">print</span>(<span class="st">&#39;unsupported membership test&#39;</span>)</code></pre></div>
+<h3 id="E1136">Unsubscriptable object (E1136)</h3>
+<p>This error occurs when you try to index a value using square brackets (<code>a[...]</code>), but the type of <code>a</code> does not support indexing (or &quot;subscripting&quot;).</p>
+<p>The standard Python types which support indexing are strings, lists, tuples, and dictionaries.</p>
+<div class="sourceCode" include="E1136_unsubscriptable_object"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], <span class="dv">5</span>]
+<span class="bu">print</span>(a[<span class="dv">1</span>][<span class="dv">0</span>])  <span class="co"># Error on this line</span></code></pre></div>
+<h3 id="E0632">Unbalanced tuple unpacking (E0632)</h3>
+<p>This error occurs when you are trying to assign to multiple variables at once, but the right side has too few or too many values in the sequence.</p>
+<div class="sourceCode" include="E0632_unbalanced_tuple_unpacking"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> set_values():
+    <span class="co">&quot;&quot;&quot;@rtype: tuple</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    var1 <span class="op">=</span> <span class="dv">1</span>
+    var2 <span class="op">=</span> <span class="dv">2</span>
+    <span class="cf">return</span> var1, var2
+
+<span class="co"># Error on the following line. Cannot unpack 2 items into 3 variables.</span>
+one, two, three <span class="op">=</span> set_values()</code></pre></div>
+<h3 id="E0633">Unpacking non-sequence (E0633)</h3>
+<p>This error occurs when you are trying to assign to multiple variables at once, but the right side is not a sequence, and so can't be unpacked.</p>
+<div class="sourceCode" include="E0633_unpacking_non_sequence"><pre class="sourceCode python"><code class="sourceCode python">one, two <span class="op">=</span> <span class="dv">15</span>   <span class="co"># Cannot unpack one thing into two things.</span></code></pre></div>
+<h2 id="code-complexity">Code complexity</h2>
+<h3 id="R0102">Simplifiable if statement (R0102)</h3>
+<p>This error occurs when you have an <code>if ... else</code> statement that can be simplified by using the value of the condition instead of additional <code>True</code> and <code>False</code> literals.</p>
+<div class="sourceCode" include="R0102_simplifiable_if_statement"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_even(num):
+    <span class="co">&quot;&quot;&quot;Return whether &lt;num&gt; is even or odd.&quot;&quot;&quot;</span>
+    <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:
+        <span class="cf">return</span> <span class="va">True</span>
+    <span class="cf">else</span>:
+        <span class="cf">return</span> <span class="va">False</span></code></pre></div>
+<p>The above example can be simplified to:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_even(num):
+    <span class="co">&quot;&quot;&quot;Return whether &lt;num&gt; is even or odd.&quot;&quot;&quot;</span>
+    <span class="cf">return</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span></code></pre></div>
+<h3 id="C0113">Unneeded not (C0113)</h3>
+<p>This error occurs when a boolean expression contains an unneeded negation. If you are getting this error, the expression can be simplified to not use a negation.</p>
+<div class="sourceCode" include="C0113_unneeded_not"><pre class="sourceCode python"><code class="sourceCode python">number <span class="op">=</span> <span class="dv">5</span>
+<span class="cf">if</span> <span class="kw">not</span> number <span class="op">&gt;=</span> <span class="dv">0</span>:  <span class="co"># Error on this line</span>
+    number_category <span class="op">=</span> <span class="st">&#39;negative&#39;</span>
+<span class="cf">else</span>:
+    number_category <span class="op">=</span> <span class="st">&#39;non-negative&#39;</span></code></pre></div>
+<p>The above can be modified to:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">number <span class="op">=</span> <span class="dv">5</span>
+<span class="cf">if</span> number <span class="op">&lt;</span> <span class="dv">0</span>:
+    number_category <span class="op">=</span> <span class="st">&#39;negative&#39;</span>
+<span class="cf">else</span>:
+    number_category <span class="op">=</span> <span class="st">&#39;non-negative&#39;</span></code></pre></div>
+<h3 id="C0121">Singleton comparison (C0121)</h3>
+<p>This is an error that occurs when an expression is compared to singleton values like True, False or None.</p>
+<div class="sourceCode" include="C0121_singleton_comparison"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> square(number):
+    <span class="cf">if</span> number <span class="op">==</span> <span class="va">None</span>:  <span class="co"># Error on this line</span>
+        <span class="cf">return</span> <span class="va">None</span>
+    <span class="cf">else</span>:
+        <span class="cf">return</span> number<span class="op">**</span><span class="dv">2</span></code></pre></div>
+<p>The above can be modified to:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> square(number):
+    <span class="cf">if</span> number <span class="kw">is</span> <span class="va">None</span>:
+        <span class="cf">return</span> <span class="va">None</span>
+    <span class="cf">else</span>:
+        <span class="cf">return</span> number<span class="op">**</span><span class="dv">2</span></code></pre></div>
+<p><strong>See also</strong>:</p>
+<ul>
+<li><a href="http://python-history.blogspot.ca/2013/11/story-of-none-true-false.html">The story of None, True and False (and an explanation of literals, keywords and builtins thrown in)</a></li>
+</ul>
+<h3 id="W0125">Using constant test (W0125)</h3>
+<p>This error occurs when a conditional statement like an <code>if</code> statement uses a constant value for its test. This is bad as the conditional statements using a constant test always evaluate to the same value. In such a case, a conditional statement should not be used, because the same branch will always execute.</p>
+<div class="sourceCode" include="W0125_using_constant_test"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> square(number):
+    <span class="cf">if</span> <span class="va">True</span>:
+        <span class="cf">return</span> number<span class="op">**</span><span class="dv">2</span>
+    <span class="cf">else</span>:
+        <span class="cf">return</span> number<span class="op">**</span><span class="dv">3</span>  <span class="co"># This line will never be executed</span></code></pre></div>
+<h3 id="R0912">Too many branches (R0912)</h3>
+<p>The function or method has too many branches, making it hard to follow. This is a sign that the function/method is too complex, and should be split up.</p>
+<p>Note: the checker limit is 12 branches.</p>
+<div class="sourceCode" include="R0912_too_many_branches"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> lots_of_branches(arg):
+    <span class="co">&quot;&quot;&quot;Example to demonstrate max branching.&quot;&quot;&quot;</span>
+    <span class="cf">if</span> arg <span class="op">==</span> <span class="dv">1</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">2</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">3</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">4</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">5</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">6</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">7</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">8</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">9</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">10</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">11</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">12</span>:
+        <span class="cf">pass</span>
+    <span class="cf">elif</span> arg <span class="op">==</span> <span class="dv">13</span>:
+        <span class="cf">pass</span></code></pre></div>
+<h3 id="R0101">Too many nested blocks (R0101)</h3>
+<p>This error occurs when you have more than three levels of nested blocks in your code. Deep nesting is a sign that your function or method is too complex, and should be broken down using helper functions or rewritten as a <a href="https://www.digitalocean.com/community/tutorials/understanding-list-comprehensions-in-python-3">list comprehension</a>.</p>
+<p><strong>Note</strong>: this checker does not count function, method, or class definitions as blocks, so the example below is considered to have <em>six</em> nested blocks, not seven.</p>
+<div class="sourceCode" include="R0101_too_many_nested_blocks"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> cross_join(x_list, y_list, z_list):
+    <span class="co">&quot;&quot;&quot;Perform an all-by-all join of all elements in the input lists,</span>
+<span class="co">    skipping elements which are None.</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    cross_join_list <span class="op">=</span> []
+    <span class="cf">for</span> x <span class="kw">in</span> x_list:  <span class="co"># Error on this line: &quot;Too many nested blocks&quot;</span>
+        <span class="cf">if</span> x <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:
+            <span class="cf">for</span> y <span class="kw">in</span> y_list:
+                <span class="cf">if</span> y <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:
+                    <span class="cf">for</span> z <span class="kw">in</span> z_list:
+                        <span class="cf">if</span> z <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:
+                            cross_join_list.append((x, y, z))
+    <span class="cf">return</span> cross_join_list</code></pre></div>
+<p>The code above can be fixed using a helper function:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> drop_none(lst):
+    new_lst <span class="op">=</span> []
+    <span class="cf">for</span> element <span class="kw">in</span> lst:
+        <span class="cf">if</span> element <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:
+            new_lst.append(element)
+    <span class="cf">return</span> new_lst
+
+
+<span class="kw">def</span> cross_join(x_list, y_list, z_list):
+    cross_join_list <span class="op">=</span> []
+    <span class="cf">for</span> x <span class="kw">in</span> drop_none(x_list):
+        <span class="cf">for</span> y <span class="kw">in</span> drop_none(y_list):
+            <span class="cf">for</span> z <span class="kw">in</span> drop_none(z_list):
+                cross_join_list.append((x, y, z))
+    <span class="cf">return</span> cross_join_list</code></pre></div>
+<p>or using list comprehension:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> cross_join(x_list, y_list, z_list):
+    cross_join_list <span class="op">=</span> [
+        (x, y, z)
+        <span class="cf">for</span> x <span class="kw">in</span> x_list
+        <span class="cf">if</span> x <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>
+        <span class="cf">for</span> y <span class="kw">in</span> y_list
+        <span class="cf">if</span> y <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>
+        <span class="cf">for</span> z <span class="kw">in</span> z_list
+        <span class="cf">if</span> z <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>
+    ]
+    <span class="cf">return</span> cross_join_list</code></pre></div>
+<h3 id="R0913">Too many arguments (R0913)</h3>
+<p>The function or method is defined with too many arguments. This is a sign that the function/method is too complex, and should be split up, or that some of the arguments are related, and should be combined and passed as a single object.</p>
+<p>Note: the checker limit is 5 arguments.</p>
+<div class="sourceCode" include="R0913_too_many_arguments"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> foo_bar(arg1, arg2, arg3, arg4, arg5, arg6):
+    <span class="co">&quot;&quot;&quot;I have too many arguments&quot;&quot;&quot;</span>
+    <span class="cf">pass</span></code></pre></div>
+<h3 id="R0914">Too many locals (R0914)</h3>
+<p>The function or method has too many local variables.</p>
+<p>Note: the checker limit is 15 local variables.</p>
+<div class="sourceCode" include="R0914_too_many_locals"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> too_many_locals():
+    <span class="co">&quot;&quot;&quot;Example function that has to many local variables.&quot;&quot;&quot;</span>
+    local_variable_1 <span class="op">=</span> <span class="dv">1</span>
+    local_variable_2 <span class="op">=</span> <span class="dv">2</span>
+    local_variable_3 <span class="op">=</span> <span class="dv">3</span>
+    local_variable_4 <span class="op">=</span> <span class="dv">4</span>
+    local_variable_5 <span class="op">=</span> <span class="dv">5</span>
+    local_variable_6 <span class="op">=</span> <span class="dv">6</span>
+    local_variable_7 <span class="op">=</span> <span class="dv">7</span>
+    local_variable_8 <span class="op">=</span> <span class="dv">8</span>
+    local_variable_9 <span class="op">=</span> <span class="dv">9</span>
+    local_variable_10 <span class="op">=</span> <span class="dv">10</span>
+    local_variable_11 <span class="op">=</span> <span class="dv">11</span>
+    local_variable_12 <span class="op">=</span> <span class="dv">12</span>
+    local_variable_13 <span class="op">=</span> <span class="dv">13</span>
+    local_variable_14 <span class="op">=</span> <span class="dv">14</span>
+    local_variable_15 <span class="op">=</span> <span class="dv">15</span>
+    local_variable_16 <span class="op">=</span> <span class="dv">16</span></code></pre></div>
+<h3 id="R0915">Too many statements (R0915)</h3>
+<p>The function or method has too many statements. You should then split it in smaller functions/methods.</p>
+<p>Note: comments do not count as statements.</p>
+<p>Note: the checker limit is 50 statements.</p>
+<div class="sourceCode" include="R0915_too_many_statements"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> statement(arg):
+    <span class="co">&quot;&quot;&quot;Dummy function to demonstrate an example within too_many_statements()&quot;&quot;&quot;</span>
+    <span class="cf">pass</span>
+
+
+<span class="kw">def</span> too_many_statements(arg):
+    <span class="co">&quot;&quot;&quot;There are too many statements in this function.&quot;&quot;&quot;</span>
+    statement_1 <span class="op">=</span> <span class="dv">1</span>
+    statement_2 <span class="op">=</span> <span class="dv">2</span>
+    statement_3 <span class="op">=</span> <span class="dv">3</span>
+    statement_4 <span class="op">=</span> <span class="dv">4</span>
+    statement_5 <span class="op">=</span> <span class="dv">5</span>
+    statement_6 <span class="op">=</span> <span class="dv">6</span>
+    statement_7 <span class="op">=</span> <span class="dv">7</span>
+    statement_8 <span class="op">=</span> <span class="dv">8</span>
+    statement_9 <span class="op">=</span> <span class="dv">9</span>
+    statement_10 <span class="op">=</span> <span class="dv">10</span>
+    statement_11 <span class="op">=</span> <span class="dv">11</span>
+    statement_12 <span class="op">=</span> <span class="dv">12</span>
+    statement_13 <span class="op">=</span> <span class="dv">13</span>
+    statement_14 <span class="op">=</span> <span class="dv">14</span>
+    statement_15 <span class="op">=</span> <span class="dv">15</span>
+    statement_16 <span class="op">=</span> <span class="dv">16</span>
+    statement_17 <span class="op">=</span> <span class="dv">17</span>
+    statement_18 <span class="op">=</span> <span class="dv">18</span>
+    statement_19 <span class="op">=</span> <span class="dv">19</span>
+    statement_20 <span class="op">=</span> <span class="dv">20</span>
+    statement_21 <span class="op">=</span> <span class="dv">21</span>
+    statement_22 <span class="op">=</span> <span class="dv">22</span>
+    statement_23 <span class="op">=</span> <span class="dv">23</span>
+    statement_24 <span class="op">=</span> <span class="dv">24</span>
+    statement_25 <span class="op">=</span> <span class="dv">25</span>
+    statement_26 <span class="op">=</span> <span class="dv">26</span>
+    statement_27 <span class="op">=</span> <span class="dv">27</span>
+    statement_28 <span class="op">=</span> <span class="dv">28</span>
+    statement_29 <span class="op">=</span> <span class="dv">29</span>
+    statement_30 <span class="op">=</span> <span class="dv">30</span>
+    statement_31 <span class="op">=</span> <span class="dv">31</span>
+    statement_32 <span class="op">=</span> <span class="dv">32</span>
+    statement_33 <span class="op">=</span> <span class="dv">33</span>
+    statement_34 <span class="op">=</span> <span class="dv">34</span>
+    statement_35 <span class="op">=</span> <span class="dv">35</span>
+    statement_36 <span class="op">=</span> <span class="dv">36</span>
+    statement_37 <span class="op">=</span> <span class="dv">37</span>
+    statement_38 <span class="op">=</span> <span class="dv">38</span>
+    statement_39 <span class="op">=</span> <span class="dv">39</span>
+    statement_40 <span class="op">=</span> <span class="dv">40</span>
+
+    statement(<span class="st">&#39;function calls are statements too&#39;</span>)
+    statement(<span class="st">&#39;function calls are statements too&#39;</span>)
+    statement(<span class="st">&#39;function calls are statements too&#39;</span>)
+    statement(<span class="st">&#39;function calls are statements too&#39;</span>)
+    statement(<span class="st">&#39;function calls are statements too&#39;</span>)
+    statement(<span class="st">&#39;function calls are statements too&#39;</span>)
+    statement(<span class="st">&#39;function calls are statements too&#39;</span>)
+    statement(<span class="st">&#39;function calls are statements too&#39;</span>)
+
+    <span class="cf">if</span> arg:
+        statments <span class="op">=</span> <span class="st">&#39;this block (including condition) counts as 2 statements.&#39;</span></code></pre></div>
+<h3 id="W0612">Unused variable (W0612)</h3>
+<p>This error occurs when you have a defined variable that is never used.</p>
+<div class="sourceCode" include="W0612_unused_variable"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> f(x):
+    y <span class="op">=</span> <span class="dv">5</span>  <span class="co"># Unused variable &#39;y&#39;</span>
+    <span class="cf">return</span> x</code></pre></div>
+<h3 id="W0613">Unused argument (W0613)</h3>
+<p>This error occurs when a function argument is never used in the function.</p>
+<div class="sourceCode" include="W0613_unused_argument"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> fun(x, y, z):  <span class="co"># Unused argument &#39;z&#39;</span>
+    <span class="cf">return</span> x <span class="op">+</span> y</code></pre></div>
+<h3 id="W0104">Pointless statement (W0104)</h3>
+<p>This error occurs when a statement doesn't have any effect. This means that the statement could be removed without changing the behaviour of the program. This is likely not what was intended.</p>
+<div class="sourceCode" include="W0104_pointless_statement"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add(lst):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type lst: list</span>
+<span class="co">    @rtype: int</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    temp <span class="op">=</span> <span class="dv">0</span>
+    <span class="cf">for</span> item <span class="kw">in</span> lst:
+        temp <span class="op">+=</span> item
+    temp  <span class="co"># Error on this line</span></code></pre></div>
+<h3 id="W0107">Unnecessary pass (W0107)</h3>
+<p>This error occurs when a <a href="https://docs.python.org/3/tutorial/controlflow.html#pass-statements"><code>pass</code> statement</a> is used that can be avoided (or has no effect). <code>pass</code> statements should only be used to fill what would otherwise be an empty code block, since code blocks cannot be empty in Python. Some examples of appropriate uses of <code>pass</code> can be found <a href="https://stackoverflow.com/a/22612774/2063031">here</a>.</p>
+<div class="sourceCode" include="W0107_unnecessary_pass"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add(lst):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type lst: list</span>
+<span class="co">    @rtype: int</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    temp <span class="op">=</span> <span class="dv">0</span>
+    <span class="cf">for</span> item <span class="kw">in</span> lst:
+        temp <span class="op">+=</span> item
+        <span class="cf">pass</span>  <span class="co"># Error on this line</span>
+    <span class="cf">return</span> temp</code></pre></div>
+<p>In the above example, the <code>pass</code> statement is &quot;unnecessary&quot; as the program's effect is not changed if <code>pass</code> is removed.</p>
+<h2 id="documentation-and-naming">Documentation and naming</h2>
+<p>Good documentation and identifiers are essential for writing software. PyTA helps check to make sure you haven't forgotten to document anything, as well as a basic check on the formatting of your identifiers.</p>
+<h3 id="C0111">Missing Docstring (C0111)</h3>
+<p>This error occurs when a module, function, class or method has no docstring. Special methods like <code>__init__</code> don't require a docstring.</p>
+<div class="sourceCode" include="C0111_missing_docstring"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_false(obj):
+    <span class="co"># this function should have a docstring.</span>
+    <span class="cf">return</span> obj <span class="kw">is</span> <span class="va">False</span></code></pre></div>
+<h3 id="C0112">Empty Docstring (C0112)</h3>
+<p>This error occurs when a module, function, class or method has an empty docstring.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">&quot;&quot;&quot;</span>
+<span class="co">&quot;&quot;&quot;</span></code></pre></div>
+<div class="sourceCode" include="C0112_empty_docstring"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_false(obj):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="cf">return</span> obj <span class="kw">is</span> <span class="va">False</span></code></pre></div>
+<h3 id="C0102">Blacklisted name (C0102)</h3>
+<p>This error occurs when a variable name is chosen to be a typical generic name, rather than a meaningful one. Here are some of the blacklisted names to avoid:</p>
+<ul>
+<li>foo</li>
+<li>bar</li>
+<li>baz</li>
+<li>toto</li>
+<li>tutu</li>
+<li>tata</li>
+</ul>
+<div class="sourceCode" include="C0102_blacklisted_name"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> pos(obj):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type obj: int</span>
+<span class="co">    @rtype: bool</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    foo <span class="op">=</span> obj
+    <span class="cf">return</span> foo <span class="op">&lt;</span> <span class="dv">0</span></code></pre></div>
+<h3 id="C0103">Invalid name (C0103)</h3>
+<p>This error occurs when a name does not follow the <a href="https://www.python.org/dev/peps/pep-0008/#prescriptive-naming-conventions">Python Naming Convention</a> associated with its type (constant, variable, etc.).</p>
+<ul>
+<li><p>Names of variables, attributes, methods, and arguments should be in <strong><code>lowercase_with_underscores</code></strong>.</p></li>
+<li><p>Names of constants should be in <strong><code>ALL_CAPS_WITH_UNDERSCORES</code></strong>.</p></li>
+<li><p>Names of classes should be in <strong><code>CamelCase</code></strong>.</p></li>
+</ul>
+<p>A special character accepted in all types of names is '_'. Numbers are allowed in all names, but names must not begin with a number.</p>
+<div class="sourceCode" include="C0103_invalid_name"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_equal(obj):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type obj: int</span>
+<span class="co">    @rtype: bool</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    Ex <span class="op">=</span> <span class="dv">5</span>  <span class="co"># Error on this line: Invalid name</span>
+    <span class="cf">return</span> obj <span class="op">==</span> Ex</code></pre></div>
+<h3 id="E0102">Function redefined (E0102)</h3>
+<p>This error occurs when a function, class or method is redefined. If you are getting this error, you should make sure all the functions, methods and classes you define have different names.</p>
+<div class="sourceCode" include="E0102_function_redefined"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> positive(obj):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type obj: int</span>
+<span class="co">    @rtype: bool</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="cf">return</span> obj <span class="op">&gt;</span> <span class="dv">0</span>
+
+
+<span class="kw">def</span> positive(obj):  <span class="co"># Error on this line: Function redefined</span>
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type obj: int</span>
+<span class="co">    @rtype: bool</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="cf">return</span> obj <span class="op">&gt;=</span> <span class="dv">0</span></code></pre></div>
+<h3 id="E0108">Duplicate argument name (E0108)</h3>
+<p>This error occurs if there are duplicate parameter names in function definitions. All parameters must have distinct names so you can refer to each one separately in the function body.</p>
+<div class="sourceCode" include="E0108_duplicate_argument_name"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add(lst, lst):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type lst: list</span>
+<span class="co">    @type lst: list</span>
+<span class="co">    @rtype: int</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    temp <span class="op">=</span> <span class="dv">0</span>
+    <span class="cf">for</span> item <span class="kw">in</span> lst:
+        temp <span class="op">+=</span> item
+    <span class="cf">return</span> temp</code></pre></div>
+<h3 id="W0621">Redefined outer name (W0621)</h3>
+<p>This error occurs when you are trying to redefine a variable name that has already been defined in the outer scope. For example, this error will occur when you have a local name identical to a global name. The local name takes precedence, but it hides the global name, making it no longer accessible.</p>
+<p>Note that the outer name is not accessible <em>anywhere</em> in the function where it is redefined, even before the redefinition.</p>
+<div class="sourceCode" include="W0621_redefined_outer_name"><pre class="sourceCode python"><code class="sourceCode python">var <span class="op">=</span> <span class="va">None</span>  <span class="co"># var defined here in the outer scope</span>
+
+
+<span class="kw">def</span> open_file():
+    var <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;/file&#39;</span>, <span class="st">&#39;w&#39;</span>)  <span class="co"># redefining name &#39;var&#39; that has already been</span>
+                              <span class="co"># defined in the outer scope.</span></code></pre></div>
+<h3 id="W0622">Redefined builtin (W0622)</h3>
+<p>This error occurs when you are trying to redefine a <a href="https://docs.python.org/3/library/functions.html">built-in function</a>.</p>
+<div class="sourceCode" include="W0622_redefined_builtin"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">id</span> <span class="op">=</span> <span class="dv">100</span>  <span class="co"># Error on this line: Redefining built-in &#39;id&#39;</span>
+
+<span class="kw">def</span> <span class="bu">sum</span>(a, b):  <span class="co"># Error on this line: Redefining built-in &#39;sum&#39;</span>
+    <span class="cf">return</span> a <span class="op">-</span> b  <span class="co"># D&#39;oh</span></code></pre></div>
+<h2 id="imports">Imports</h2>
+<p>There are standards governing how you should organize your imports, or even possibly which modules you may import at all.</p>
+<h3 id="E9999">Forbidden imports (E9999)</h3>
+<p>For your work in CSC148, we expect you to use only the Python language features we have covered in lectures, or ones that we have explicitly mentioned for an exercise/lab/assignment. No other external libraries may be used.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> copy   <span class="co"># Error on this line</span>
+
+x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]
+y <span class="op">=</span> copy.copy(x)</code></pre></div>
+<h3 id="E0401">Import error (E0401)</h3>
+<p>The module is unable to be imported. Check the spelling of the module name, or whether the module is in the correct directory.</p>
+<div class="sourceCode" include="E0401_import_error"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> missing_module  <span class="co"># this module does not exist</span></code></pre></div>
+<p>There are other forms of import statements that may cause this error, for example:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> missing_module <span class="im">as</span> foo  <span class="co"># this module does not exist</span></code></pre></div>
+<h3 id="E0611">No name in module (E0611)</h3>
+<p>This error occurs when you are trying to access a variable from an imported module, but that variable name could not be found in that referenced module.</p>
+<div class="sourceCode" include="E0611_no_name_in_module"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> math <span class="im">import</span> does_not_exist</code></pre></div>
+<h3 id="W0406">Import self (W0406)</h3>
+<p>A module should not import itself. So for example, if the module is named <code>W0406_import_self</code> you cannot import it as follows:</p>
+<div class="sourceCode" include="W0406_import_self"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> W0406_import_self  <span class="co"># importing the same name as the module</span></code></pre></div>
+<h3 id="W0404">Reimported (W0404)</h3>
+<p>A module should not be imported more than once.</p>
+<div class="sourceCode" include="W0404_reimported"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> math
+<span class="im">import</span> math  <span class="co"># importing a module twice</span></code></pre></div>
+<h3 id="W0401">Wildcard import (W0401)</h3>
+<p>Only import what you need. Wildcard imports (shown below) are generally discouraged, as they add all the objects from the imported module into the global namespace, and make it difficult to tell in which module a particular class, function or constant was defined. This may cause problems, for example, when multiple modules have objects with identical names.</p>
+<div class="sourceCode" include="W0401_wildcard_import"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> valid_module <span class="im">import</span> <span class="op">*</span></code></pre></div>
+<p>Rather than importing everything with wildcard *, specify the names of the objects which you would like to import:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> module_name <span class="im">import</span> SOME_CONSTANT, SomeClass, some_function</code></pre></div>
+<p>Or, if you need to import many objects from a particular module, import the module itself, and use it as a namespace for the required objects:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> module_name
+
+c <span class="op">=</span> module_name.SomeClass()</code></pre></div>
+<h3 id="C0411">Wrong import order (C0411)</h3>
+<p>Used when <a href="https://www.python.org/dev/peps/pep-0008/#imports">PEP8 import order</a> is not respected (do the standard library imports first, then third-party libraries, then local imports).</p>
+<div class="sourceCode" include="C0411_wrong_import_order"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> .. <span class="im">import</span> pyta  <span class="co"># your own modules should be imported last.</span>
+<span class="im">import</span> sys  <span class="co"># &quot;standard modules&quot; should be imported first</span></code></pre></div>
+<h3 id="C0413">Wrong import position (C0413)</h3>
+<p>Imports should be placed at the top of the module above any other code, but below the module docstring.</p>
+<div class="sourceCode" include="C0413_wrong_import_position"><pre class="sourceCode python"><code class="sourceCode python">my_list <span class="op">=</span> [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>]
+<span class="im">import</span> math  <span class="co"># imports should be at the top (below the docstring)</span></code></pre></div>
+<h3 id="C0412">Ungrouped imports (C0412)</h3>
+<p>Imports should be grouped by packages.</p>
+<div class="sourceCode" include="C0412_ungrouped_imports"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> sys <span class="im">import</span> byteorder  <span class="co"># same packages should be grouped</span>
+<span class="im">from</span> math <span class="im">import</span> floor
+<span class="im">from</span> sys <span class="im">import</span> stdin  <span class="co"># same packages should be grouped</span></code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> sys <span class="im">import</span> byteorder, stdin  <span class="co"># same packages should be grouped</span>
+<span class="im">from</span> math <span class="im">import</span> floor</code></pre></div>
+<h3 id="C0410">Multiple imports (C0410)</h3>
+<p>Don't import multiple modules on one line.</p>
+<div class="sourceCode" include="C0410_multiple_imports"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> sys, math</code></pre></div>
+<p>Do this instead:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> sys
+<span class="im">import</span> math</code></pre></div>
+<p>Although, note that you can import multiple functions on a line, when they are from the same module, for example:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> sys <span class="im">import</span> byteorder, stdin</code></pre></div>
+<h3 id="W0611">Unused import (W0611)</h3>
+<p>This error occurs when you import a module which is not used anywhere in your code.</p>
+<div class="sourceCode" include="W0611_unused_import"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> re  <span class="co"># Module imported, and not used.</span></code></pre></div>
+<h2 id="classes-and-objects">Classes and objects</h2>
+<h3 id="R0902">Too many instance attributes (R0902)</h3>
+<p>The class has too many instance attributes, which suggests that it is too complicated and tries to do too many things.</p>
+<p><strong>Note</strong>: the checker limit is 7 instance attributes.</p>
+<div class="sourceCode" include="R0902_too_many_instance_attributes"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyClass(<span class="bu">object</span>):
+    <span class="co">&quot;&quot;&quot;Example with too many instance attributes.&quot;&quot;&quot;</span>
+
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="co">&quot;&quot;&quot;Many instance attributes&quot;&quot;&quot;</span>
+        <span class="va">self</span>.animal <span class="op">=</span> <span class="st">&#39;Dog&#39;</span>
+        <span class="va">self</span>.bread <span class="op">=</span> <span class="st">&#39;Sourdough&#39;</span>
+        <span class="va">self</span>.liquid <span class="op">=</span> <span class="st">&#39;Water&#39;</span>
+        <span class="va">self</span>.colour <span class="op">=</span> <span class="st">&#39;Black&#39;</span>
+        <span class="va">self</span>.shape <span class="op">=</span> <span class="st">&#39;Circle&#39;</span>
+        <span class="va">self</span>.direction <span class="op">=</span> <span class="st">&#39;Up&#39;</span>
+        <span class="va">self</span>.clothing <span class="op">=</span> <span class="st">&#39;Shirt&#39;</span>
+        <span class="va">self</span>.number <span class="op">=</span> <span class="dv">3</span></code></pre></div>
+<p>One solution is to logically decompose the class into multiple classes, each with fewer instance attributes. Then we can use composition to access those attributes in another class.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Edible(<span class="bu">object</span>):
+    <span class="co">&quot;&quot;&quot;Example with fewer instance attributes.&quot;&quot;&quot;</span>
+
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="co">&quot;&quot;&quot;Below are the instance attributes:&quot;&quot;&quot;</span>
+        <span class="va">self</span>.bread <span class="op">=</span> <span class="st">&quot;Sourdough&quot;</span>
+        <span class="va">self</span>.liquid <span class="op">=</span> <span class="st">&quot;Water&quot;</span>
+
+
+<span class="kw">class</span> Ownership(<span class="bu">object</span>):
+    <span class="co">&quot;&quot;&quot;Example with fewer instance attributes.&quot;&quot;&quot;</span>
+
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="co">&quot;&quot;&quot;Below are the instance attributes:&quot;&quot;&quot;</span>
+        <span class="va">self</span>.animal <span class="op">=</span> <span class="st">&quot;Dog&quot;</span>
+        <span class="va">self</span>.clothing <span class="op">=</span> <span class="st">&quot;Shirt&quot;</span>
+
+
+<span class="kw">class</span> Description(<span class="bu">object</span>):
+    <span class="co">&quot;&quot;&quot;Example with fewer instance attributes.&quot;&quot;&quot;</span>
+
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="co">&quot;&quot;&quot;Below are the instance attributes:&quot;&quot;&quot;</span>
+        <span class="va">self</span>.colour <span class="op">=</span> <span class="st">&quot;Black&quot;</span>
+        <span class="va">self</span>.shape <span class="op">=</span> <span class="st">&quot;Circle&quot;</span>
+        <span class="va">self</span>.direction <span class="op">=</span> <span class="st">&quot;Up&quot;</span>
+        <span class="va">self</span>.number <span class="op">=</span> <span class="dv">3</span>
+
+
+<span class="kw">class</span> Composition(<span class="bu">object</span>):
+    <span class="co">&quot;&quot;&quot;Example showing composition of other classes into instance attributes.&quot;&quot;&quot;</span>
+
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="co">&quot;&quot;&quot;Construct instance attributes. For example,</span>
+<span class="co">        self.ownership.animal is &quot;Dog&quot;</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="va">self</span>.edible <span class="op">=</span> Edible()
+        <span class="va">self</span>.ownership <span class="op">=</span> Ownership()
+        <span class="va">self</span>.description <span class="op">=</span> Description()</code></pre></div>
+<h3 id="W0222">Different method signature (W0222)</h3>
+<p>When a child class overrides a method of the parent class, the new method should have the same signature as the method which it is overriding. In other words, the names and the order of the parameters should be the same in the two methods.</p>
+<div class="sourceCode" include="W0222_signature_differs"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Parent:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="va">self</span>.num <span class="op">=</span> <span class="dv">2</span>
+
+    <span class="kw">def</span> return_num(<span class="va">self</span>, multiple):
+        <span class="cf">return</span> <span class="va">self</span>.num <span class="op">*</span> multiple
+
+
+<span class="kw">class</span> Child(Parent):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        Parent.<span class="fu">__init__</span>(<span class="va">self</span>)
+
+    <span class="kw">def</span> return_num(<span class="va">self</span>):  <span class="co"># Missing argument (to keep signature identical)</span>
+        <span class="cf">return</span> <span class="dv">42</span></code></pre></div>
+<h3 id="E0101">Return in <code>__init__</code> (E0101)</h3>
+<p>This error occurs when the [<code>__init__</code>][object.<strong>init</strong>] method contains a return statement.</p>
+<p>The purpose of the <code>__init__</code> method is to initialize the attributes of an object. <code>__init__</code> is called by the special method [<code>__new__</code>][object.<strong>new</strong>] when a new object is being instantiated, and <code>__new__</code> will raise a <code>TypeError</code> if <code>__init__</code> returns anything other than <code>None</code>.</p>
+<div class="sourceCode" include="E0101_return_in_init"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Animal:
+    <span class="co">&quot;&quot;&quot;An animal in the zoo.</span>
+
+<span class="co">    === Public Attributes ===</span>
+<span class="co">    @type name: str</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):
+        <span class="co">&quot;&quot;&quot;</span>
+<span class="co">        @type self: Animal</span>
+<span class="co">        @type name: str</span>
+<span class="co">        @rtype: None</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="va">self</span>.name <span class="op">=</span> name
+        <span class="cf">return</span> <span class="va">True</span>  <span class="co"># Error on this line</span></code></pre></div>
+<h3 id="W0212">Protected member access (W0212)</h3>
+<p>Variable names starting with underscores are a convention that means the field should not be accessed outside of the calling class. This encapsulation is a hint to the user that they should not change the field, as it may be critical to the proper functioning of the object. Furthermore, this also applies to methods with underscores, since calling them may also cause adverse effects.</p>
+<div class="sourceCode" include="W0212_protected_access"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyClass:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="va">self</span>._num <span class="op">=</span> <span class="dv">42</span>
+
+c <span class="op">=</span> MyClass()
+<span class="co"># Should not be accssing the protected attribute:</span>
+<span class="bu">print</span>(c._num)</code></pre></div>
+<h3 id="W0233">Bad parent init (W0233)</h3>
+<p>You should call the <code>__init__</code> method of the parent, not of some arbitrary and unrelated class.</p>
+<div class="sourceCode" include="W0233_non_parent_init"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> ClassA:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="cf">pass</span>
+
+
+<span class="kw">class</span> Parent:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="cf">pass</span>
+
+
+<span class="kw">class</span> Child(Parent):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        ClassA.<span class="fu">__init__</span>(<span class="va">self</span>)  <span class="co"># `ClassA` is not a parent of `Child`</span></code></pre></div>
+<p>To fix this, call the <code>__init__</code> method of the parent class, or use <a href="https://docs.python.org/3/library/functions.html#super"><code>super()</code></a>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Call the `__init__` method on the correct parent class</span>
+<span class="kw">class</span> Child(Parent):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        Parent.<span class="fu">__init__</span>(<span class="va">self</span>)
+
+<span class="co"># Or use `super()`</span>
+<span class="kw">class</span> Child(Parent):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="bu">super</span>().<span class="fu">__init__</span>()</code></pre></div>
+<p><strong>See also</strong>:</p>
+<ul>
+<li><a href="https://youtu.be/EiOglTERPEo">Super considered super!</a></li>
+<li><a href="https://fuhm.net/super-harmful/">Python's super considered harmful</a></li>
+<li><a href="https://stackoverflow.com/q/222877/2063031">StackOverflow: What does 'super' do in Python?</a></li>
+</ul>
+<h3 id="W0201">Attribute defined outside init (W0201)</h3>
+<p>Any attribute you define for a class should be created inside the <code>__init__</code> method. Defining it outside this method is considered bad practice, as it makes it harder to keep track of what attributes the class actually has.</p>
+<div class="sourceCode" include="W0201_attribute_defined_outside_init"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyClass:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="va">self</span>.num <span class="op">=</span> <span class="dv">1</span>
+
+    <span class="kw">def</span> set_other_num(<span class="va">self</span>, other_num):
+        <span class="va">self</span>.other_num <span class="op">=</span> other_num</code></pre></div>
+<p>You should do this instead:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyClass:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="va">self</span>.num <span class="op">=</span> <span class="dv">1</span>
+        <span class="va">self</span>.other_num <span class="op">=</span> <span class="va">None</span>
+
+    <span class="kw">def</span> set_other_num(<span class="va">self</span>, other_num):
+        <span class="va">self</span>.other_num <span class="op">=</span> other_num</code></pre></div>
+<h3 id="E0203">Access to member before definition (E0203)</h3>
+<p>Before trying to use a member of a class, it should have been defined at some point. If you try to use it before assigning to it, an error will occur.</p>
+<div class="sourceCode" include="E0203_access_member_before_definition"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyClass:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="bu">print</span>(<span class="va">self</span>.a)  <span class="co"># Haven&#39;t defined self.a yet, can&#39;t use</span>
+        <span class="va">self</span>.a <span class="op">=</span> <span class="dv">5</span></code></pre></div>
+<h3 id="E0202">Method hidden (E0202)</h3>
+<p>If you accidentally mask a method with an attribute, it can cause other code to attempt to invoke what it believes to be a method, which will fail since it has become an attribute instead. This will cause the program to raise an error.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Example:
+    <span class="kw">def</span> field(<span class="va">self</span>, num):
+        <span class="cf">return</span> num
+
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="va">self</span>.field <span class="op">=</span> <span class="st">&#39;Masking the function with this string&#39;</span>
+
+e <span class="op">=</span> Example()
+e.field(num)   <span class="co"># Error since we masked it</span></code></pre></div>
+<h3 id="E0302">Unexpected special method signature (E0302)</h3>
+<p>Occurs when a special method (aka <a href="http://www.pixelmonkey.org/2013/04/11/python-double-under-double-wonder">&quot;dunder method&quot;</a>, because it has double underscores or &quot;dunders&quot; on both sides) does not have the expected number of parameters. Special methods have an expected signature, and if we create a method with the same name and a different number of parameters, it can break existing code and lead to exceptions.</p>
+<div class="sourceCode" include="E0302_unexpected_special_method_signature"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> A:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="cf">pass</span>
+
+    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):  <span class="co"># Good, this is what is expected</span>
+        <span class="cf">return</span> <span class="st">&#39;string&#39;</span>
+
+
+<span class="kw">class</span> B:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="cf">pass</span>
+
+    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>, a):  <span class="co"># Bad, Python won&#39;t know what to put in &#39;a&#39;</span>
+        <span class="cf">return</span> <span class="st">&#39;string&#39;</span></code></pre></div>
+<h3 id="E0239">Inheriting from a non-class (E0239)</h3>
+<p>When you inherit, it must come from a class. If you use something that is not a class, you won't be able to inherit from it. In the following example, trying to inherit from a string is not allowed. While a string is a class, this is passing in an object rather than the actual class itself.</p>
+<div class="sourceCode" include="E0239_inherit_non_class"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> newclass(<span class="st">&#39;str&#39;</span>):
+    <span class="cf">pass</span></code></pre></div>
+<h3 id="E0241">Duplicate bases (E0241)</h3>
+<p>When inheriting, you should only specify a class once to inherit from, multiple times is an error:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> A:
+    <span class="cf">pass</span>
+
+<span class="kw">class</span> B(A, A):  <span class="co"># Only include A once to inherit properly</span>
+    <span class="cf">pass</span></code></pre></div>
+<h3 id="E0211">No method argument (E0211)</h3>
+<p>Each method in a class needs to have at least one argument (which is usually <code>self</code>). Python uses this to call methods, and the first argument is populated with the object that is calling the method. This is what allows you to access the calling object.</p>
+<p>For example, the following two are equivalent:</p>
+<div class="sourceCode" include="E0211_no_method_argument"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyClass:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="cf">pass</span>
+
+    <span class="kw">def</span> method():
+        <span class="bu">print</span>(<span class="st">&#39;Missing argument for method definition&#39;</span>)</code></pre></div>
+<p>Therefore, if you do not provide any arguments, then Python does not know how to pass the object to the method, and it will error out. To fix this, put <code>self</code> in the parenthesis for the method call.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyClass:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="cf">pass</span>
+
+    <span class="kw">def</span> method():
+        <span class="bu">print</span>(<span class="st">&#39;Missing argument for method definition&#39;</span>)</code></pre></div>
+<h3 id="E0213"><code>self</code> as the first argument (E0213)</h3>
+<p>The first parameter should be the exact word <code>self</code>. Naming the first parameter something else is not technically an error, but using &quot;self&quot; is such a common practice that PyTA checks for this. The following is an example of a good, and bad example:</p>
+<div class="sourceCode" include="E0213_no_self_argument"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyClass:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="cf">pass</span>
+
+    <span class="kw">def</span> methodA(not_self):  <span class="co"># Bad (should be &#39;self&#39;)</span>
+        <span class="cf">pass</span>
+
+    <span class="kw">def</span> methodB(<span class="va">self</span>):  <span class="co"># Good</span>
+        <span class="cf">pass</span></code></pre></div>
+<h3 id="R0201">No self use (R0201)</h3>
+<p>If a method (a function in a class) does not make use of the 'self' (or first) argument, that means the function is not performing anything that is related to the object itself. This means the function could be moved outside of the class since none of the code inside makes use of anything inside the class it's defined.</p>
+<div class="sourceCode" include="R0201_no_self_use"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> NoSelfUsage:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="va">self</span>.a <span class="op">=</span> <span class="dv">42</span>
+
+    <span class="kw">def</span> no_self(<span class="va">self</span>, num):
+        num <span class="op">=</span> num <span class="op">+</span> <span class="dv">2</span>
+        <span class="bu">print</span>(num)
+
+
+<span class="co"># You would fix it as follows by moving it outside the class:</span>
+<span class="kw">def</span> no_self(num):
+    num <span class="op">=</span> num <span class="op">+</span> <span class="dv">2</span>
+    <span class="bu">print</span>(num)</code></pre></div>
+<h3 id="W0211">Bad static member (W0211)</h3>
+<p>Static methods are methods that do not operate on instances. Including one inside a class can be done if you feel the logic belongs inside the class and should be encapsulated by it for clarity, but static methods mean they do not operate on classes, and therefore 'self' is very likely a programming error unless you know what you are doing (and even then, it is a bad practice).</p>
+<p>When you make a static method, you should not name any variable 'self' to avoid confusion.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> C:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):
+        <span class="va">self</span>.num <span class="op">=</span> <span class="dv">5</span>
+
+    <span class="at">@staticmethod</span>
+    <span class="kw">def</span> method(<span class="va">self</span>):  <span class="co"># Static methods do not have a &#39;self&#39;</span>
+        <span class="va">self</span>.num <span class="op">+=</span> <span class="dv">1</span></code></pre></div>
+<h2 id="exceptions">Exceptions</h2>
+<h3 id="W0702">Bare exception (W0702)</h3>
+<p>While you can catch any exception without specifying a class to catch after the <code>except</code> keyword, this is bad practice since it will mask other exceptions that could appear which you do not want to catch.</p>
+<p>Always explicitly name the classes you expect to catch.</p>
+<div class="sourceCode" include="W0702_bare_except"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> no_catching():
+    <span class="cf">try</span>:
+        <span class="cf">raise</span> <span class="pp">TypeError</span>()
+    <span class="cf">except</span>:
+        <span class="bu">print</span>(<span class="st">&#39;Requires an exception class&#39;</span>)</code></pre></div>
+<h3 id="W0703">Exception is too generic (W0703)</h3>
+<p>Similar to exception error W0702, if your exception is too generic then you may end up burying errors since they will be always caught. Because of this, you should not be using <code>except Exception</code> as your except block since it can catch exceptions you do not want caught.</p>
+<div class="sourceCode" include="W0703_broad_except"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> generic_catch():
+    <span class="cf">try</span>:
+        a <span class="op">=</span> <span class="dv">5</span> <span class="op">/</span> <span class="dv">0</span>
+    <span class="cf">except</span> <span class="pp">Exception</span>:
+        <span class="bu">print</span>(<span class="st">&#39;Got exception&#39;</span>)</code></pre></div>
+<h3 id="W0705">Duplicate except blocks (W0705)</h3>
+<p>When you list an exception to be caught, you should not list it again. Only have one block for each exception. This does not include having child and parent exceptions, but rather it means don't have <code>exception MyException</code>, and then later on when listing exceptions you have <code>exception MyException</code> again.</p>
+<div class="sourceCode" include="W0705_duplicate_except"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> repeat_except_blocks():
+    <span class="cf">try</span>:
+        <span class="cf">raise</span> <span class="pp">Exception</span>()
+    <span class="cf">except</span> <span class="pp">Exception</span>:
+        <span class="bu">print</span>(<span class="st">&#39;This is triggered&#39;</span>)
+    <span class="cf">except</span> <span class="pp">Exception</span>:
+        <span class="bu">print</span>(<span class="st">&#39;Duplicate exception block&#39;</span>)</code></pre></div>
+<h3 id="E0701">Bad exception order (E0701)</h3>
+<p>Except blocks are analyzed sequentially (from top to bottom) and the block that meets the criteria for catching the exception first will be used. This means if you have a more generic exception type before a specific exception type, you will never trigger the code in the block that is hidden by the generic exception.</p>
+<p>It is also good practice since you want to narrow down the exception type to be as specific as possible, since the more generic exception may catch other types as well.</p>
+<div class="sourceCode" include="E0701_bad_except_order"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> func(num):
+    <span class="cf">try</span>:
+        <span class="cf">raise</span> <span class="pp">ZeroDivisionError</span>()
+    <span class="cf">except</span> <span class="pp">Exception</span>:
+        <span class="bu">print</span>(<span class="st">&#39;This is always triggered&#39;</span>)
+    <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:
+        <span class="bu">print</span>(<span class="st">&#39;Cannot ever be reached&#39;</span>)</code></pre></div>
+<h3 id="W0711">Binary op exception (W0711)</h3>
+<p>The proper way to have an except block catch multiple exceptions is to have the exception classes in a tuple. You can incorrectly write an except block in Python with multiple classes separated by an <em>or</em> (see example). If you do it the second way, the <em>or</em> binary operator will not do what you think it does -- in fact, the exception on the right side of the <em>or</em> will not be caught and proceed to be passed up the call stack (which likely will yield an uncaught exception, terminating your program).</p>
+<div class="sourceCode" include="W0711_binary_op_exception"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> MyException(<span class="pp">Exception</span>):
+    <span class="cf">pass</span>
+
+
+<span class="kw">class</span> MyDoubleException(<span class="pp">Exception</span>):
+    <span class="cf">pass</span>
+
+
+<span class="kw">def</span> binary_capture():
+    <span class="cf">try</span>:
+        <span class="co"># Not caught. &#39;or&#39; doesn&#39;t do what you think.</span>
+        <span class="co"># Need to do: except (MyException, MyDoubleException):</span>
+        <span class="cf">raise</span> MyDoubleException()
+    <span class="cf">except</span> MyException <span class="kw">or</span> MyDoubleException:
+            <span class="bu">print</span>(<span class="st">&#39;Will not detect MyDoubleException due to how &quot;or&quot; works&#39;</span>)</code></pre></div>
+<h3 id="E0704">Misplaced bare raise (E0704)</h3>
+<p>When you call <em>raise</em>, it's usually to throw an exception. If you are inside an 'except' block after you catch an exception, you can continue to pass on the exception to later code. You may want to do this if your intention is to capture a generated exception, then do something before passing it onwards (such as maybe closing a file or some other sensitive operation that must be done for program integrity that an exception would break). You can do this by calling <em>raise</em> on its own without a class as follows:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> func():
+    <span class="cf">try</span>:
+        <span class="cf">raise</span> MyException()
+    <span class="cf">except</span> MyException:
+        <span class="co"># Do something important here (if needed).</span>
+        <span class="co"># Now, raise again what we just caught.</span>
+        <span class="cf">raise</span></code></pre></div>
+<p>If you call <em>raise</em> outside of an 'except' block, it can't work because there is no exception to throw as seen in the following example:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> bad_raise()
+    <span class="co"># Bad example, needs to be in an &#39;except&#39; block:</span>
+    <span class="cf">raise</span></code></pre></div>
+<h3 id="E0702">Raising bad type (E0702)</h3>
+<p>You have to raise an object that is an exception, you can't raise anything like a number. If it does not descend at some point from an Exception class, it should not be raised. To solve this issue, extend a new class from the Exception class, name it appropriately, and raise that.</p>
+<div class="sourceCode" include="E0702_raising_bad_type"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> raise_bad():
+    <span class="cf">raise</span> <span class="dv">1</span></code></pre></div>
+<h3 id="E0710">Raising non-exception (E0710)</h3>
+<p>You cannot raise an object that is not a descendant of Exception (which implies being a child of BaseException). Anything you raise must at some point descend from a class that inherits exception.</p>
+<p>The solution is either to create your own exception, or to find a proper exception that best describes the problem.</p>
+<div class="sourceCode" include="E0710_raising_non_exception"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> ClassWithNoExceptionParent():
+    <span class="co">&quot;&quot;&quot;This class doesn&#39;t inherit from BaseException.&quot;&quot;&quot;</span>
+    <span class="cf">pass</span>
+
+
+<span class="cf">raise</span> ClassWithNoExceptionParent()</code></pre></div>
+<h3 id="E0711">NotImplemented raised (E0711)</h3>
+<p><code>NotImplemented</code> is intended to be a return value for methods, such as when you create your own comparisons (ex: using <code>__eq__</code>), when what you actually want is to throw the exception. Forgetting the suffix 'Error' is a common mistake and do what you intended.</p>
+<p>This is also related to another error where raising a non-exception is not allowed.</p>
+<div class="sourceCode" include="E0711_notimplemented_raised"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> call_exception():
+    <span class="cf">raise</span> <span class="va">NotImplemented</span></code></pre></div>
+<h3 id="E0712">Catching non-exception (E0712)</h3>
+<p>If your 'except' class uses a class that does not inherit from BaseException at some point, then you are trying to catch an exception that is not a well-defined exception. Your code should only try to catch exceptions that extend from BaseException. Python requires you to raise exceptions that derive from BaseException, and having a class type that does not extend from this and being raised will cause a problem.</p>
+<div class="sourceCode" include="E0712_catching_non_exception"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> RandomClass():
+    <span class="co">&quot;&quot;&quot;This class doesn&#39;t inherit from BaseException.&quot;&quot;&quot;</span>
+    <span class="cf">pass</span>
+
+
+<span class="cf">try</span>:
+    n <span class="op">=</span> <span class="dv">5</span> <span class="op">/</span> <span class="dv">0</span>  <span class="co"># Will throw a ZeroDivisionError</span>
+<span class="cf">except</span> RandomClass:
+    <span class="bu">print</span>(<span class="st">&#39;The above does not inherit from BaseException&#39;</span>)
+<span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:
+    <span class="bu">print</span>(<span class="st">&#39;Will not be reached due to erroring out earlier&#39;</span>)</code></pre></div>
+<h2 id="custom">Custom errors</h2>
+<h3 id="E9998">Forbidden IO function (E9998)</h3>
+<p>We do not expect to see I/O functions (<a href="https://docs.python.org/3/library/functions.html#input"><code>input</code></a>, <a href="https://docs.python.org/3/library/functions.html#open"><code>open</code></a> and <a href="https://docs.python.org/3/library/functions.html#print"><code>print</code></a>) in your code in this course unless explicitly required. If you use print statements to debug your code, make sure to remove them before submission.</p>
+<div class="sourceCode" include="E9998_forbidden_io_function"><pre class="sourceCode python"><code class="sourceCode python">
+<span class="kw">def</span> hello():
+    <span class="co">&quot;&quot;&quot;Print a message to the user.&quot;&quot;&quot;</span>
+
+    <span class="co"># You should not use input action in some assignments</span>
+    name <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;What is your name?&quot;</span>)  <span class="co"># Error on this line</span>
+
+    <span class="co"># You should not use print action in some assignments</span>
+    <span class="bu">print</span>(<span class="st">&#39;hello, &#39;</span> <span class="op">+</span> name)  <span class="co"># Error on this line</span>
+
+<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:
+    hello()</code></pre></div>
+<h3 id="E9996">Always returning in a loop (E9996)</h3>
+<p>This error occurs when you <em>always</em> return something inside a loop body, which makes the loop execute only once.</p>
+<div class="sourceCode" include="always_returning_example"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> loop():
+    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">10</span>):
+        <span class="cf">if</span> j <span class="op">&lt;</span> <span class="dv">2</span>:
+            j <span class="op">+=</span> <span class="dv">1</span>
+            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">2</span>):
+                <span class="cf">if</span> k <span class="op">&gt;</span> <span class="dv">2</span>:
+                    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">5</span>):
+                        <span class="cf">return</span> <span class="dv">2</span>
+                    <span class="cf">return</span> <span class="dv">1</span>
+                <span class="cf">else</span>:
+                    <span class="cf">return</span> <span class="dv">1</span>
+        <span class="cf">elif</span> j <span class="op">&gt;</span> <span class="dv">1</span>:
+            <span class="cf">return</span> <span class="dv">1</span>
+        <span class="cf">else</span>:
+            j <span class="op">+=</span> <span class="dv">1</span>
+            <span class="cf">return</span> <span class="dv">1</span>
+    i <span class="op">=</span> <span class="dv">0</span>
+    <span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10</span>:
+        <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">2</span>:
+            <span class="cf">return</span> <span class="dv">2</span>
+        <span class="cf">else</span>:
+            i <span class="op">+=</span> <span class="dv">1</span>
+        <span class="cf">return</span> <span class="dv">4</span></code></pre></div>
+<h3 id="E9991">Dynamic Execution (E9991)</h3>
+<p>Use of builtin functions <a href="https://docs.python.org/3/library/functions.html#exec"><code>exec</code></a>, <a href="https://docs.python.org/3/library/functions.html#eval"><code>eval</code></a>, and <a href="https://docs.python.org/3/library/functions.html#compile"><code>compile</code></a> is not allowed.</p>
+<div class="sourceCode" include="dynamic_execution_example"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> get_power_function(power):
+    <span class="co">&quot;&quot;&quot;Return a function which takes its argument to the &lt;power&gt;th power.&quot;&quot;&quot;</span>
+    func <span class="op">=</span> <span class="bu">eval</span>(<span class="st">&quot;lambda x: x ** </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(power))
+    <span class="cf">return</span> func
+
+
+<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:
+    power_func <span class="op">=</span> get_power_function(<span class="dv">10</span>)
+    <span class="bu">print</span>(power_func(<span class="dv">2</span>))  <span class="co"># Prints 1024</span></code></pre></div>
+<p><strong>See also</strong>:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile-in-python">StackOverflow: What's the difference between eval, exec, and compile in Python?</a></li>
+</ul>
+<h2 id="miscellaneous">Miscellaneous</h2>
+<h3 id="E1305">Too many format args (E1305)</h3>
+<p>This error occurs when you use the <code>format</code> method on a string, but call it with more arguments than the number of <code>{}</code> in the string.</p>
+<div class="sourceCode" include="E1305_too_many_format_args"><pre class="sourceCode python"><code class="sourceCode python">name <span class="op">=</span> <span class="st">&#39;Amy&#39;</span>
+age <span class="op">=</span> <span class="st">&#39;17&#39;</span>
+country <span class="op">=</span> <span class="st">&#39;England&#39;</span>
+city <span class="op">=</span> <span class="st">&#39;London&#39;</span>
+
+<span class="co"># Error on the following line</span>
+s <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{}</span><span class="st"> who is </span><span class="sc">{}</span><span class="st"> lives in </span><span class="sc">{}</span><span class="st">&#39;</span>.<span class="bu">format</span>(name, age, country, city)</code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">name <span class="op">=</span> <span class="st">&quot;Amy&quot;</span>
+age <span class="op">=</span> <span class="st">&quot;17&quot;</span>
+country <span class="op">=</span> <span class="st">&quot;England&quot;</span>
+
+s <span class="op">=</span> <span class="st">&quot;</span><span class="sc">{}</span><span class="st"> who is </span><span class="sc">{}</span><span class="st"> lives in </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(name, age, country)</code></pre></div>
+<p>This error is similar to <a href="#E1121">E1121</a>.</p>
+<h3 id="E1306">Too few format args (E1306)</h3>
+<p>This error occurs when you use the <code>format</code> method on a string, but call it with fewer arguments than the number of <code>{}</code> in the string.</p>
+<div class="sourceCode" include="E1306_too_few_format_args"><pre class="sourceCode python"><code class="sourceCode python">s <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{}</span><span class="st"> and </span><span class="sc">{}</span><span class="st">&#39;</span>.<span class="bu">format</span>(<span class="st">&#39;first&#39;</span>)  <span class="co"># Error on this line</span></code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">s <span class="op">=</span> <span class="st">&quot;</span><span class="sc">{}</span><span class="st"> and </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(<span class="st">&quot;first&quot;</span>, <span class="st">&quot;second&quot;</span>)</code></pre></div>
+<p>This error is similar to <a href="#E1120">E1120</a>.</p>
+<h3 id="W1303">Missing format argument key (W1303)</h3>
+<p>This error occurs when a format string that uses named fields does not receive required keywords. In the following example, we should assign three values for <code>last_name</code>, <code>first_name</code> and <code>age</code>.</p>
+<div class="sourceCode" include="W1303_missing_format_argument_key"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Error on the following line: missing format argument for &#39;age&#39;</span>
+s <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{last_name}</span><span class="st">, </span><span class="sc">{fist_name}</span><span class="st"> - </span><span class="sc">{age}</span><span class="st">&#39;</span>.<span class="bu">format</span>(last_name<span class="op">=</span><span class="st">&#39;bond&#39;</span>, first_name<span class="op">=</span><span class="st">&#39;james&#39;</span>)</code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">s <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{last_name}</span><span class="st">, </span><span class="sc">{fist_name}</span><span class="st"> - </span><span class="sc">{age}</span><span class="st">&#39;</span>.<span class="bu">format</span>(last_name<span class="op">=</span><span class="st">&#39;bond&#39;</span>, first_name<span class="op">=</span><span class="st">&#39;james&#39;</span>, age<span class="op">=</span><span class="dv">37</span>)</code></pre></div>
+<p>This error is similar to <a href="#E1120">E1120</a> and <a href="#E1120">E1306</a>.</p>
+<h3 id="E1310">Bad str strip call (E1310)</h3>
+<p>This error occurs when you call <a href="https://docs.python.org/3/library/stdtypes.html#str.strip"><code>strip</code></a>, <a href="https://docs.python.org/3/library/stdtypes.html#str.lstrip"><code>lstrip</code></a>, or <a href="https://docs.python.org/3/library/stdtypes.html#str.rstrip"><code>rstrip</code></a>, but pass an argument string which contains duplicate characters. The argument string should contain the <em>distinct</em> characters that you want to remove from the end(s) of a string.</p>
+<div class="sourceCode" include="E1310_bad_str_strip_call"><pre class="sourceCode python"><code class="sourceCode python">filename <span class="op">=</span> <span class="st">&#39;attachment.data&#39;</span>
+basename <span class="op">=</span> filename.strip(<span class="st">&#39;data&#39;</span>)  <span class="co"># Error on this line</span>
+<span class="bu">print</span>(basename)  <span class="co"># Prints &#39;chment.&#39;</span></code></pre></div>
+<p>It is a common mistake to think that <code>mystring.strip(chars)</code> removes the substring <code>chars</code> from the beginning end end of <code>mystring</code>. It actually removes all characters in <code>chars</code> from the beginning and end of <code>mystring</code>, <em>irrespective of their order</em>! If you pass an argument string with duplicate characters to <code>mystring.strip</code>, you are likely misinterpreting what this method is doing.</p>
+<h3 id="W1305">Format combined specification (W1305)</h3>
+<p>This error occurs when a format string contains both automatic field numbering (e.g. <code>{}</code>) and manual field specification (e.g. <code>{0}</code>).</p>
+<p>For example, we should not use <code>{}</code> and <code>{index}</code> at the same time.</p>
+<div class="sourceCode" include="W1305_format_combined_specification"><pre class="sourceCode python"><code class="sourceCode python">s <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{}</span><span class="st"> and </span><span class="sc">{0}</span><span class="st">&#39;</span>.<span class="bu">format</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>)  <span class="co"># Error on this line</span></code></pre></div>
+<p>Corrected version:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">s <span class="op">=</span> <span class="st">&quot;</span><span class="sc">{}</span><span class="st"> and </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)</code></pre></div>
+<p>or:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">s <span class="op">=</span> <span class="st">&quot;</span><span class="sc">{0}</span><span class="st"> and </span><span class="sc">{1}</span><span class="st">&quot;</span>.<span class="bu">format</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)</code></pre></div>
+<h3 id="W1401">Anomalous backslash in string (W1401)</h3>
+<p>This error occurs when a string literal contains a backslash which is not part of an escape sequence.</p>
+<div class="sourceCode" include="W1401_anomalous_backslash_in_string"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> re
+re.findall(<span class="st">&#39;(\d+)\D*&#39;</span>, <span class="st">&#39;123 Main St.&#39;</span>)  <span class="co"># Error on this line</span></code></pre></div>
+<p>In order to make it explicit that the backslash character represents a backslash, you should escape the backslash with another backslash, or create a <em>raw string</em> by prefixing the string literal with the letter <code>r</code>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">re.findall(<span class="st">&#39;(</span><span class="ch">\\</span><span class="st">d+)</span><span class="ch">\\</span><span class="st">D*&#39;</span>, <span class="st">&#39;123 Main St.&#39;</span>)  <span class="co"># OK</span>
+re.findall(<span class="vs">r&#39;(\d+)\D*&#39;</span>, <span class="st">&#39;123 Main St.&#39;</span>)  <span class="co"># OK</span></code></pre></div>
+<p><strong>See also</strong>:</p>
+<ul>
+<li><a href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals">String and Bytes literals</a></li>
+<li><a href="https://stackoverflow.com/a/19030982/2063031">StackOverflow: pep8 warning on regex string in Python, Eclipse</a></li>
+</ul>
+<h3 id="W1503">Redundant unittest assert (W1503)</h3>
+<p>The first argument of <code>assertTrue</code> and <code>assertFalse</code> is a &quot;condition&quot;, which should evaluate to True or False.</p>
+<p>These methods evaluate the condition to check whether the test passes or fails. The conditions should depend on the code that you are testing, and should not be a constant literal like <code>True</code> or <code>4</code>. Otherwise, the test will always have the same result, regardless of whether your code is correct.</p>
+<div class="sourceCode" include="W1503_redundant_unittest_assert"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> unittest
+
+
+<span class="kw">def</span> is_sorted(lst):
+    <span class="co">&quot;&quot;&quot;Check if &lt;lst&gt; is sorted in ascending order.&quot;&quot;&quot;</span>
+    <span class="cf">return</span> lst <span class="op">==</span> <span class="bu">sorted</span>(lst)
+
+
+<span class="kw">class</span> TestStringMethods(unittest.TestCase):
+    <span class="co">&quot;&quot;&quot;Simple tests for example purposes.&quot;&quot;&quot;</span>
+
+    <span class="kw">def</span> test_isupper(<span class="va">self</span>):
+        <span class="co">&quot;&quot;&quot;Simple tests for example purposes.&quot;&quot;&quot;</span>
+
+        <span class="co"># Valid:</span>
+        <span class="va">self</span>.assertTrue(is_sorted([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]))
+        <span class="va">self</span>.assertFalse(is_sorted([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>]))
+
+        <span class="co"># If a constant is passed as parameter, that condition is always true:</span>
+        <span class="va">self</span>.assertTrue(<span class="st">&#39;YES&#39;</span>)
+        <span class="va">self</span>.assertTrue(<span class="dv">1</span>)
+        <span class="va">self</span>.assertTrue(<span class="va">True</span>)
+        <span class="va">self</span>.assertTrue(<span class="va">False</span>)</code></pre></div>
+<h3 id="C0123">Unidiomatic type check (C0123)</h3>
+<p>This error occurs when <code>type</code> is used instead of <code>isinstance</code> to perform a type check. Use <code>isinstance(x, Y)</code> instead of <code>type(x) == Y</code>.</p>
+<div class="sourceCode" include="C0123_unidiomatic_typecheck"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_int(obj):
+    <span class="co">&quot;&quot;&quot;Check is the given object is of type &#39;int&#39;</span>
+<span class="co">    @type obj: object</span>
+<span class="co">    @rtype: bool</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="cf">return</span> <span class="bu">type</span>(obj) <span class="op">==</span> <span class="bu">int</span>  <span class="co"># Error on this line</span></code></pre></div>
+<p>The above can be modified to:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_int(obj):
+    <span class="co">&quot;&quot;&quot;Check if the given object is of type &#39;int&#39;.</span>
+
+<span class="co">    @type obj: object</span>
+<span class="co">    @rtype: bool</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="cf">return</span> <span class="bu">isinstance</span>(obj, <span class="bu">int</span>)</code></pre></div>
+<p>This error is similar to <a href="#C0121">C0121</a>.</p>
+<h3 id="W0102">Dangerous default value (W0102)</h3>
+<p>This warning occurs when a mutable object, such as a list or dictionary, is provided as a default argument inside a function or a method definition. Default arguments are instantiated only once, at the time when the function or the method is defined (i.e. when the interpreter parses the <code>def ...</code> block). If the default argument is modified, it will remain modified in all subsequent calls of the function or method. This leads to a common &quot;gotcha&quot; in Python, where an &quot;empty&quot; list or dictionary, specified as the default argument, starts containing values on calls other than the first call.</p>
+<div class="sourceCode" include="W0102_dangerous_default_value"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> make_list(n, lst<span class="op">=</span>[]):
+    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):
+        lst.append(i)
+    <span class="bu">print</span>(lst)
+
+
+<span class="bu">print</span>(make_list(<span class="dv">5</span>))
+<span class="bu">print</span>(make_list(<span class="dv">5</span>))</code></pre></div>
+<p>Many new users of Python would expect the output of the code above to be:</p>
+<pre><code>[0, 1, 2, 3, 4]
+[0, 1, 2, 3, 4]</code></pre>
+<p>However, the actual output is:</p>
+<pre><code>[0, 1, 2, 3, 4]
+[0, 1, 2, 3, 4, 0, 1, 2, 3, 4]</code></pre>
+<p>If you want to prevent this surprising behavior, you should use <code>None</code> as the default argument, and then check for <code>None</code> inside the function body. For example, the following code prints the expected output:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> make_list(n, lst<span class="op">=</span><span class="va">None</span>):
+    <span class="cf">if</span> lst <span class="kw">is</span> <span class="va">None</span>:
+        lst <span class="op">=</span> []
+    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):
+        lst.append(i)
+    <span class="bu">print</span>(lst)
+
+
+<span class="bu">print</span>(make_list(<span class="dv">5</span>))
+<span class="bu">print</span>(make_list(<span class="dv">5</span>))</code></pre></div>
+<p><strong>See also</strong>:</p>
+<ul>
+<li><a href="http://python-guide-pt-br.readthedocs.io/en/latest/writing/gotchas/#mutable-default-arguments">Common Gotchas - Mutable Default Arguments</a></li>
+<li><a href="http://effbot.org/zone/default-values.htm">Default Parameter Values in Python</a></li>
+</ul>
+<h3 id="W0199">Assert on tuple (W0199)</h3>
+<p>This error occurs when an <code>assert</code> statement is called with a tuple as the first argument. <code>assert</code> acting on a tuple passes if and only if the tuple is non-empty. This is likely <em>not</em> what the programmer had intended.</p>
+<div class="sourceCode" include="W0199_assert_on_tuple"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> check(condition1, condition2):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    @type condition1: bool</span>
+<span class="co">    @type condition2: bool</span>
+<span class="co">    @rtype: None</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="cf">assert</span> (condition1, condition2)  <span class="co"># Error on this line</span></code></pre></div>
+<p>If you would like to assert multiple conditions, you should join those conditions using the <code>and</code> operator, or use individual <code>assert</code> statements for each condition.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> check(condition1, condition2, condition3):
+    <span class="co"># Option 1</span>
+    <span class="cf">assert</span> (condition1 <span class="kw">and</span> condition2 <span class="kw">and</span> condition3)
+    <span class="co"># Option 2</span>
+    <span class="cf">assert</span> condition1
+    <span class="cf">assert</span> condition2
+    <span class="cf">assert</span> condition3</code></pre></div>
+<p>If you would like <code>assert</code> to show a special error message when the assertion fails, you should provide that message as the second argument.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> check(condition, message):
+    <span class="cf">assert</span> condition, message  <span class="co"># the message is optional</span></code></pre></div>
+<h2 id="syntax">Syntax errors</h2>
+<h3 id="E0001">Syntax Error (E0001)</h3>
+<ol style="list-style-type: decimal">
+<li><p><em>SyntaxError: Missing parentheses in call to 'print'</em></p>
+<p>In Python 3, <code>print</code> is a builtin <em>function</em>, and should be called like any other function, with arguments inside parentheses. In previous versions of Python, <code>print</code> had been a keyword.</p>
+<div class="sourceCode" include="missing_parentheses_in_call_to_print"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span> <span class="st">&quot;Hello world!&quot;</span>   <span class="co"># Error on this line</span>
+<span class="bu">print</span>(<span class="st">&quot;Hello world!&quot;</span>)  <span class="co"># Correct version</span></code></pre></div></li>
+<li><p><em>SyntaxError: can't assign to literal</em></p>
+<p>There must always be a variable on the left-hand side of the equals sign (where the term &quot;variable&quot; can refer to a single identifier <code>a = 10</code>, multiple identifiers <code>a, b = 10, 20</code>, a dictionary element <code>foo['a'] = 10</code>, a class attribute <code>foo.bar = 10</code>, etc.). You cannot assign to a string or numeric literal.</p>
+<div class="sourceCode" include="assignment_to_literal"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> <span class="dv">12</span>
+<span class="dv">12</span> <span class="op">=</span> a  <span class="co"># Error on this line: can&#39;t assign to literal</span>
+<span class="co">&quot;hello&quot;</span> <span class="op">=</span> a  <span class="co"># Error on this line: can&#39;t assign to literal</span></code></pre></div></li>
+<li><p><em>SyntaxError: invalid syntax</em></p>
+<p>Some of the common causes of this error include:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Missing colon at the end of an <code>if</code>, <code>elif</code>, <code>else</code>, <code>for</code>, <code>while</code>, <code>class</code>, or <code>def</code> statement.</p>
+<div class="sourceCode" include="missing_colon"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">if</span> spam <span class="op">==</span> <span class="dv">42</span>  <span class="co"># Error on this line: missing colon</span>
+    <span class="bu">print</span>(<span class="st">&#39;Hello!&#39;</span>)</code></pre></div></li>
+<li><p>Assignment operator <code>=</code> used inside a condition expression (likely in place of the equality operator <code>==</code>).</p>
+<div class="sourceCode" include="assignment_inside_condition"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">if</span> spam <span class="op">=</span> <span class="dv">42</span>:  <span class="co"># Error on this line: assignment (`=`) instead of equality (`==`)</span>
+    <span class="bu">print</span>(<span class="st">&#39;Hello!&#39;</span>)</code></pre></div></li>
+<li><p>Missing quote at the beginning or the end of a string literal.</p>
+<div class="sourceCode" include="missing_quote"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&#39;Hello!)  # Error on this line: missing closing quote (`&#39;</span>`)</code></pre></div></li>
+<li><p>Assignment to a Python keyword.</p>
+<div class="sourceCode" include="assignment_to_keyword"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> <span class="op">=</span> <span class="st">&#39;algebra&#39;</span>  <span class="co"># Error on this line: assignment to keyword &#39;class&#39;</span></code></pre></div>
+<p>The following is a <a href="https://docs.python.org/3/reference/lexical_analysis.html#keywords">list of Python keywords</a> which cannot be used as variable names:</p>
+<pre><code>False      class      finally    is         return
+None       continue   for        lambda     try
+True       def        from       nonlocal   while
+and        del        global     not        with
+as         elif       if         or         yield
+assert     else       import     pass
+break      except     in         raise</code></pre></li>
+<li><p>Use of an undefined operator. For example, there are no &quot;increment by one&quot; <code>++</code> or &quot;decrement by one&quot; <code>--</code> operators in Python.</p>
+<div class="sourceCode" include="undefined_operator"><pre class="sourceCode python"><code class="sourceCode python">spam <span class="op">=</span> <span class="dv">0</span>
+spam<span class="op">++</span>  <span class="co"># Error on this line: undefined operator `++`</span></code></pre></div></li>
+</ol></li>
+</ol>
+<h3 id="E0002">Indentation Error (E0002)</h3>
+<ol style="list-style-type: decimal">
+<li><p><em>IndentationError: unindent does not match any outer indentation level</em></p>
+<p>You must use a constant number of whitespace characters for each level of indentation. If you start a code block using four spaces for indentation, you must use four spaces throughout that code block.</p>
+<div class="sourceCode" include="unindent_does_not_match_indentation"><pre class="sourceCode python"><code class="sourceCode python">num_even <span class="op">=</span> <span class="dv">0</span>
+num_odd <span class="op">=</span> <span class="dv">0</span>
+<span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):
+    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:
+        num_even <span class="op">+=</span> <span class="dv">1</span>
+      <span class="cf">else</span>:  <span class="co"># Error on this line: six spaces before `else:` instead of four</span>
+        num_odd <span class="op">+=</span> <span class="dv">1</span></code></pre></div>
+<p>Note that it is <strong>strongly recommended</strong> that you <a href="https://www.python.org/dev/peps/pep-0008/#indentation"><strong>always use four spaces per indentation level</strong></a> throughout your code.</p></li>
+<li><p><em>IndentationError: unexpected indent</em></p>
+<p>In Python, the only time you would increase the indentation level of your code is to define a new code block after a <a href="https://docs.python.org/3/reference/compound_stmts.html">compound statement</a> such as <code>for</code>, <code>if</code>, <code>def</code>, or <code>class</code>.</p>
+<div class="sourceCode" include="unexpected_indent"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">for</span> i, animal <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">&#39;Monkey&#39;</span>, <span class="st">&#39;Donkey&#39;</span>, <span class="st">&#39;Platypus&#39;</span>]):
+    <span class="bu">print</span>(i)
+      <span class="bu">print</span>(animal)  <span class="co"># IndentationError: unexpected indent</span></code></pre></div></li>
+</ol>
+<!-- Python objects -->
+<!-- Python docs -->
+<!-- PEP8 -->
+<!-- StackOverflow -->
+<!-- everything else -->
+  </div>
+  <footer>
+    <div>
+      <a href="https://github.com/pyta-uoft">
+        <img class="logo logo-pyta" src="./images/pyta_logo.svg" />
+      </a>
+      <a href="http://web.cs.toronto.edu/">
+        <img class="logo logo-ut" src="./images/csfaculty.jpg" />
+      </a>
+    </div>
+    <p>
+      <a href="https://github.com/pyta-uoft/pyta">Get involved</a>
+    </p>
+    <p>
+      Maintained by <a href="http://www.cs.toronto.edu/~david/">David Liu</a>
+    </p>
+  </footer>
+  <script src="./scripts/jquery-3.1.0.min.js"></script>
+  <script src="./scripts/script.js"></script>
+</body>
+</html>

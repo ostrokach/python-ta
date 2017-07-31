@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>PyTA Quick Start</title>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="icon" type="image/png" href="./images/favicon.png">
+      <style type="text/css">
+    div.sourceCode { overflow-x: auto; }
+    table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+      margin: 0; padding: 0; vertical-align: baseline; border: none; }
+    table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+    td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+    td.sourceCode { padding-left: 5px; }
+    pre, code { color: #cccccc; background-color: #303030; }
+    code > span.kw { color: #f0dfaf; } /* Keyword */
+    code > span.dt { color: #dfdfbf; } /* DataType */
+    code > span.dv { color: #dcdccc; } /* DecVal */
+    code > span.bn { color: #dca3a3; } /* BaseN */
+    code > span.fl { color: #c0bed1; } /* Float */
+    code > span.ch { color: #dca3a3; } /* Char */
+    code > span.st { color: #cc9393; } /* String */
+    code > span.co { color: #7f9f7f; } /* Comment */
+    code > span.ot { color: #efef8f; } /* Other */
+    code > span.al { color: #ffcfaf; } /* Alert */
+    code > span.fu { color: #efef8f; } /* Function */
+    code > span.er { color: #c3bf9f; } /* Error */
+    code > span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+    code > span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+    code > span.sc { color: #dca3a3; } /* SpecialChar */
+    code > span.vs { color: #cc9393; } /* VerbatimString */
+    code > span.ss { color: #cc9393; } /* SpecialString */
+    code > span.im { } /* Import */
+    code > span.va { } /* Variable */
+    code > span.cf { color: #f0dfaf; } /* ControlFlow */
+    code > span.op { color: #f0efd0; } /* Operator */
+    code > span.bu { } /* BuiltIn */
+    code > span.ex { } /* Extension */
+    code > span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+    code > span.at { } /* Attribute */
+    code > span.do { color: #7f9f7f; } /* Documentation */
+    code > span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+    code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+    code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+    </style>
+    </head>
+<body>
+  <div class="content">
+    <h1 id="title">PyTA Quick Start</h1>
+<p>This webpage is a brief introduction to PyTA, mainly intended for students in CSC148.</p>
+<h2 id="installation">Installation</h2>
+<p>In PyCharm:</p>
+<ol style="list-style-type: decimal">
+<li>Open up the Settings dialog (Windows: File -&gt; Settings..., Mac: PyCharm -&gt; Preferences).</li>
+<li>Go to Project <your project name>, and select Project Interpreter.</li>
+<li>Make sure you have Python 3.5 selected in the &quot;Project Interpreter&quot; dropdown.</li>
+<li>Click on the green <strong>+</strong> icon on the right side.</li>
+<li>Search for <code>python-ta</code>, and press &quot;Install Package&quot;.</li>
+</ol>
+<p>In the command line:</p>
+<ol style="list-style-type: decimal">
+<li>Simply do <code>pip install python-ta</code> (or <code>pip3</code>, if you have <code>pip</code> targetting a Python 2 installation).</li>
+</ol>
+<h2 id="starting-out">Starting out</h2>
+<p>To load PyTA, start the Python interpreter (in PyCharm, this is called the Python Console) and run the following command:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> python<span class="op">-</span>ta</code></pre></div>
+<p>Then you can begin checking Python modules. You can check any Python file in the current directory. For example, if you have a file called 'hello.py', you can check it as follows:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> python_ta.check_all(<span class="st">&#39;hello.py&#39;</span>)</code></pre></div>
+<p>If you want to check a file which is in a subdirectory of your current location, simply write the (relative) path to the file.</p>
+<p>On Windows, use double backslashes to separate folders:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> python_ta.check_all(<span class="st">&#39;subfolder1</span><span class="ch">\\</span><span class="st">sub2</span><span class="ch">\\</span><span class="st">a</span><span class="ch">\\</span><span class="st">my_file.py&#39;</span>)</code></pre></div>
+<p>On Macs/Unix, use a forward slash instead:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> python_ta.check_all(<span class="st">&#39;subfolder1/sub2/a/my_file.py&#39;</span>)</code></pre></div>
+<h2 id="errors-vs.-warnings">Errors vs. warnings</h2>
+<p>PyTA distinguishes between two types of checks:</p>
+<ul>
+<li>logical errors and use of forbidden language features</li>
+<li>style errors or violating chosen conventions</li>
+</ul>
+<p>The output of <code>python_ta.check_all</code> divides the messages into two sections:</p>
+<pre><code>=== Code errors/forbidden usage (fix these right away!) ===
+...
+
+=== Style/convention errors (fix these before submission) ===
+...</code></pre>
+<p>Note: the headings will always appear, even if you don't have any errors. If there aren't any errors listed, the sections will simply be empty.</p>
+<p>If you want to only see the logical errors and forbidden features (useful for debugging purposes), use <code>python_ta.check_errors</code> instead:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> python_ta.check_errors(<span class="st">&#39;hello.py&#39;</span>)</code></pre></div>
+<h2 id="accessing-the-documentation">Accessing the documentation</h2>
+<p>If you find yourself wondering what an error message means, take the five-letter error code (which is always of the form <code>E0401</code>), and call the function:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> python_ta.doc(<span class="st">&#39;E0401&#39;</span>)</code></pre></div>
+<p>The corresponding entry for this error code will appear on the documentation page.</p>
+  </div>
+  <footer>
+    <div>
+      <a href="https://github.com/pyta-uoft">
+        <img class="logo logo-pyta" src="./images/pyta_logo.svg" />
+      </a>
+      <a href="http://web.cs.toronto.edu/">
+        <img class="logo logo-ut" src="./images/csfaculty.jpg" />
+      </a>
+    </div>
+    <p>
+      <a href="https://github.com/pyta-uoft/pyta">Get involved</a>
+    </p>
+    <p>
+      Maintained by <a href="http://www.cs.toronto.edu/~david/">David Liu</a>
+    </p>
+  </footer>
+  <script src="./scripts/jquery-3.1.0.min.js"></script>
+  <script src="./scripts/script.js"></script>
+</body>
+</html>
