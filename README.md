@@ -22,7 +22,7 @@
 
 - Different escape sequences in string and byte literals.
 - Table formating with the current style may not be ideal for presenting data (too much horizontal space; table is centered by default).
-  <img width="60%" src="images/escape-sequence-table.png" />
+  <p align="center"><img width="80%" src="images/escape-sequence-table.png" /></p>
 - hello world
 
 
