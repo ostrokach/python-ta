@@ -18,7 +18,11 @@
   - Document function? Arguments? Return type?
   - Maybe no return types, since using `@type` and `@rtype` is not often used in Python outside this course?
 
+----
 
+- Different escape sequences in string and byte literals.
+- Table formating in currecnt style has too much horizonal spacing, and centers the table by default.
+  ![escape sequence table](images/escape-sequence-table.png)
 
 ----
 
