@@ -1,6 +1,7 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
+- [Week 11](#week-9-july-31---august-7)
 - [Week 10](#week-9-july-24---july-31)
 - [Week 9](#week-9-july-17---july-24)
 - [Week 8](#week-8-july-10---july-17)
@@ -18,6 +19,14 @@
 - Consistent documentation for all examples.
   - Document function? Arguments? Return type?
   - Maybe no return types, since using `@type` and `@rtype` is not often used in Python outside this course?
+- Have to document self?
+
+---
+
+## Week 10 (July 31 - August 7)
+
+- Duck typing (`float` instead of `int`) (see [Duck type compatibility](http://mypy.readthedocs.io/en/latest/duck_type_compatibility.html))
+- Variable / attribute types?
 
 ----
 
