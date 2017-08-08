@@ -23,6 +23,8 @@
 
 ### Things to discuss
 
+#### Typehint-related
+
 - Is it really neccessary to document `self`?
   1. This is not done in the docstrings of popular packages (checked `numpy`, `pandas`).
   2. MyPy detects the correct type of `self` automatically.
@@ -37,14 +39,22 @@
 
 - Should I include typehints for variables and attributes?
   - Get `Expression has type "Any"` errors (e.g.  `E1136_unsubscriptable_object.py`, `W0711_binary_op_exception.py`) unless I set set `disallow_any = unimported, unannotated, decorated, generics` (note the missing `expr`) in the `mypy.ini` file.
-  - ```python
-    a = [[1, 2], 5]
-    print(a[1][0])  # Error on this line
-    ```
 
-- Changed one-line docstrings to contain opening and closing `"""` on the same line (ref. [PEP257](https://www.python.org/dev/peps/pep-0257/#one-line-docstrings)).
+- Ran into [some issues](https://github.com/PyCQA/pylint/issues/867) with PyLint and typehints, seem to be fixed in 1.7.1.
 
-- Ran into [some issues](https://github.com/PyCQA/pylint/issues/867) with pylint, seem to be fixed in 1.7.1.
+- Duplicate errors for Pylint and MyPy
+
+    - E0102
+    - E0211
+    - E0108
+    - E0104
+    - E0103
+    - E1101
+    - E1102
+    - W0222
+    - ...
+
+#### Other
 
 - Fixed `Unneccessary "else" after "return"` errors in several examples.
   - e.g. `C0121_singleton_comparison.py`
@@ -66,21 +76,11 @@
         return a - b  # D'oh
     ```
 
+- Changed one-line docstrings to contain opening and closing `"""` on the same line (ref. [PEP257](https://www.python.org/dev/peps/pep-0257/#one-line-docstrings)).
+
 - Period after title in docstrings (yes?).
 
 - **we should** vs **you should**
-
-- Duplicate errors for Pylint and MyPy
-
-    - E0102
-    - E0211
-    - E0108
-    - E0104
-    - E0103
-    - E1101
-    - E1102
-    - W0222
-    - ...
 
 - Errors provided as Python code blocks
 
