@@ -28,7 +28,7 @@
 - Is it really neccessary to document `self`?
   1. This is not done in the docstrings of popular packages (checked `numpy`, `pandas`).
   2. MyPy detects the correct type of `self` automatically.
-      - See [`W0233_non_parent_init.py`][pyta/examples/W0233_non_parent_init.py]
+      - See [`W0233_non_parent_init.py`](https://github.com/ostrokach/pyta/blob/typehints/examples/pylint/W0233_non_parent_init.py)
 
 - OK to use generics with typehints?
   - For example, a function takes in a list of lists and returns one of the elements?
@@ -38,20 +38,20 @@
   - MyPy gives warning with `el: List[float] = [1.1, 2.1, 3.1]; running_sum = 0; for el in lst: running_sum += el`
 
 - Should I include typehints for variables and attributes?
-  - Get `Expression has type "Any"` errors (e.g.  `E1136_unsubscriptable_object.py`, `W0711_binary_op_exception.py`) unless I set set `disallow_any = unimported, unannotated, decorated, generics` (note the missing `expr`) in the `mypy.ini` file.
+  - Get `Expression has type "Any"` errors (e.g.  [`E1136_unsubscriptable_object.py`](https://github.com/ostrokach/pyta/blob/typehints/examples/pylint/E1136_unsubscriptable_object.py), [`W0711_binary_op_exception.py`](https://github.com/ostrokach/pyta/blob/typehints/examples/pylint/W0711_binary_op_exception.py)) unless I set set `disallow_any = unimported, unannotated, decorated, generics` (note the missing `expr`) in the `mypy.ini` file.
 
 - Ran into [some issues](https://github.com/PyCQA/pylint/issues/867) with PyLint and typehints, seem to be fixed in PyLint 1.7.1.
 
 - Duplicate errors for Pylint and MyPy:
 
-    - E0102
-    - E0211
-    - E0108
-    - E0104
-    - E0103
-    - E1101
-    - E1102
-    - W0222
+    - [E0102](http://www.cs.toronto.edu/~david/pyta/#E0102)
+    - [E0103](http://www.cs.toronto.edu/~david/pyta/#E0103)
+    - [E0104](http://www.cs.toronto.edu/~david/pyta/#E0104)
+    - [E0108](http://www.cs.toronto.edu/~david/pyta/#E0108)
+    - [E1101](http://www.cs.toronto.edu/~david/pyta/#E1101)
+    - [E1102](http://www.cs.toronto.edu/~david/pyta/#E1102)
+    - [E0211](http://www.cs.toronto.edu/~david/pyta/#E0211)
+    - [W0222](http://www.cs.toronto.edu/~david/pyta/#W0222)
     - ...
 
 - Would be nice if typehints were rendered in a different colour on the website.
