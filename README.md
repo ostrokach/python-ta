@@ -84,7 +84,7 @@
 
 - *we should* vs. *you should* (*you should*?)
 
-- Errors provided as Python code blocks
+- Errors provided as Python code blocks:
 
     - E0241
     - E0704
