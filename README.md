@@ -1,8 +1,8 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
-- [Week 11](#week-9-july-31---august-7)
-- [Week 10](#week-9-july-24---july-31)
+- [Week 11](#week-11-july-31---august-7)
+- [Week 10](#week-10-july-24---july-31)
 - [Week 9](#week-9-july-17---july-24)
 - [Week 8](#week-8-july-10---july-17)
 - [Week 7](#week-7-july-5---july-10)
@@ -24,19 +24,19 @@
 ### Things to discuss
 
 - Is it really neccessary to document `self`?
-
   1. This is not done in the docstrings of popular packages (checked `numpy`, `pandas`).
   2. MyPy detects the correct type of `self` automatically.
-    
-    - See `W0233_non_parent_init.py`
+      - See `W0233_non_parent_init.py`
 
 - OK to use generics with typehints?
-  - e.g. a function takes in a list of lists and returns one of the elements.
+  - For example, a function takes in a list of lists and returns one of the elements?
 
-- `List[Any]` vs List[float]`
+- `List[Any]` vs. `List[float]` vs. `List[int]`?
+  - When it's not clear that the example should apply to floats only?
+  - MyPy gives warning with `el: List[float] = [1.1, 2.1, 3.1]; running_sum = 0; for el in lst: running_sum += el`
 
 - Should I include typehints for variables and attributes?
-  - Get `Expression has type "Any"` errors (e.g.  `E1136_unsubscriptable_object.py`, `W0711_binary_op_exception.py`) unless I set set `disallow_any = unimported, unannotated, decorated, generics` in the `mypy.ini` file (note the missing `expr`).
+  - Get `Expression has type "Any"` errors (e.g.  `E1136_unsubscriptable_object.py`, `W0711_binary_op_exception.py`) unless I set set `disallow_any = unimported, unannotated, decorated, generics` (note the missing `expr`) in the `mypy.ini` file.
   - ```python
     a = [[1, 2], 5]
     print(a[1][0])  # Error on this line
