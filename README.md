@@ -24,8 +24,10 @@
 ### Things to discuss
 
 - Is it really neccessary to document `self`?
+
   1. This is not done in the docstrings of popular packages (checked `numpy`, `pandas`).
   2. MyPy detects the correct type of `self` automatically.
+    
     - See `W0233_non_parent_init.py`
 
 - OK to use generics with typehints?
