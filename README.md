@@ -40,9 +40,9 @@
 - Should I include typehints for variables and attributes?
   - Get `Expression has type "Any"` errors (e.g.  `E1136_unsubscriptable_object.py`, `W0711_binary_op_exception.py`) unless I set set `disallow_any = unimported, unannotated, decorated, generics` (note the missing `expr`) in the `mypy.ini` file.
 
-- Ran into [some issues](https://github.com/PyCQA/pylint/issues/867) with PyLint and typehints, seem to be fixed in 1.7.1.
+- Ran into [some issues](https://github.com/PyCQA/pylint/issues/867) with PyLint and typehints, seem to be fixed in PyLint 1.7.1.
 
-- Duplicate errors for Pylint and MyPy
+- Duplicate errors for Pylint and MyPy:
 
     - E0102
     - E0211
@@ -53,6 +53,8 @@
     - E1102
     - W0222
     - ...
+
+- Would be nice if typehints were rendered in a different colour on the website.
 
 #### Other
 
@@ -80,7 +82,7 @@
 
 - Period after title in docstrings (yes?).
 
-- **we should** vs **you should**
+- *we should* vs. *you should* (*you should*?)
 
 - Errors provided as Python code blocks
 
@@ -90,6 +92,16 @@
     - E0202
     - C0112
 
+- Should all functions contain docstrings describing what they do?
+
+- Should all comments start with a capital?
+
+### To do
+
+- Convert Python code snippets into error files for cases where errors are provided as Python code snippets.
+- Proof-read the remaining half (approx.) of the website.
+- Go back to "needs improvement" examples from the spreadsheet.
+- Add descriptions for missing errors.
 
 ----
 
