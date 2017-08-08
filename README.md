@@ -14,19 +14,80 @@
 
 ----
 
-## Notes
+## Week 11 (July 31 - August 7)
 
-- Consistent documentation for all examples.
-  - Document function? Arguments? Return type?
-  - Maybe no return types, since using `@type` and `@rtype` is not often used in Python outside this course?
-- Have to document self?
+### Pull requests
 
----
+- [pyta-uoft/pyta#306](https://github.com/pyta-uoft/pyta/pull/306)
+- [pyta-uoft/website#67](https://github.com/pyta-uoft/website/pull/67)
 
-## Week 10 (July 31 - August 7)
+### Things to discuss
 
-- Duck typing (`float` instead of `int`) (see [Duck type compatibility](http://mypy.readthedocs.io/en/latest/duck_type_compatibility.html))
-- Variable / attribute types?
+- Is it really neccessary to document `self`?
+  1. This is not done in the docstrings of popular packages (checked `numpy`, `pandas`).
+  2. MyPy detects the correct type of `self` automatically.
+    - See `W0233_non_parent_init.py`
+
+- OK to use generics with typehints?
+  - e.g. a function takes in a list of lists and returns one of the elements.
+
+- `List[Any]` vs List[float]`
+
+- Should I include typehints for variables and attributes?
+  - Get `Expression has type "Any"` errors (e.g.  `E1136_unsubscriptable_object.py`, `W0711_binary_op_exception.py`) unless I set set `disallow_any = unimported, unannotated, decorated, generics` in the `mypy.ini` file (note the missing `expr`).
+  - ```python
+    a = [[1, 2], 5]
+    print(a[1][0])  # Error on this line
+    ```
+
+- Changed one-line docstrings to contain opening and closing `"""` on the same line (ref. [PEP257](https://www.python.org/dev/peps/pep-0257/#one-line-docstrings)).
+
+- Ran into [some issues](https://github.com/PyCQA/pylint/issues/867) with pylint, seem to be fixed in 1.7.1.
+
+- Fixed `Unneccessary "else" after "return"` errors in several examples.
+  - e.g. `C0121_singleton_comparison.py`
+
+    ```python
+    def square(number: float) -> Optional[float]:
+      if number == None:  # Error on this line
+          return None
+      else:
+          return number**2
+    ```
+
+- Keep line length under 80 chars in examples?
+
+    ```python
+    id = 100  # Error on this line: Redefining built-in 'id'
+
+    def sum(a: float, b: float) -> float:  # Error on this line: Redefining built-in 'sum'
+        return a - b  # D'oh
+    ```
+
+- Period after title in docstrings (yes?).
+
+- **we should** vs **you should**
+
+- Duplicate errors for Pylint and MyPy
+
+    - E0102
+    - E0211
+    - E0108
+    - E0104
+    - E0103
+    - E1101
+    - E1102
+    - W0222
+    - ...
+
+- Errors provided as Python code blocks
+
+    - E0241
+    - E0704
+    - W0211
+    - E0202
+    - C0112
+
 
 ----
 
