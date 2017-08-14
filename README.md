@@ -31,6 +31,16 @@ Week 12
 Travis CI
 - [pyta-uoft/website#69](https://github.com/pyta-uoft/website/pull/69)
 
+Added errors that are new to PyLint 1.7.2 to the [spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983).
+- Added your toronto.edu email to the list of people who can edit, but would probably need your gmail address instead?
+- Can't make the link editable because this README is public...
+
+**W0106**: Document as well?
+
+```python
+lst = [1, 2, 3]
+lst.append(4), "This should not be here"  # Eror on this line
+```
 
 ### Work in progress
 
