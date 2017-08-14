@@ -6,5 +6,5 @@
     "website/gen"
   ],
   "ext": "md,py,css,js",
-  "exec": "./scripts/rebuild_website.sh"
+  "exec": "cd website; python build.py; cd ..; sleep 1; browser-sync reload -p 3001"
 }
