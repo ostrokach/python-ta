@@ -34,10 +34,10 @@ Travis CI
 
 ### Work in progress
 
-- [ ] we should vs. you should (you should?)
-- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112)
-- [ ] All functions should contain docstrings describing what they do?
-- [ ] All comments should start with a capital?
+- [ ] Use *we should* instead of *you should*.
+- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
+- [ ] All functions should contain docstrings describing what they do.
+- [ ] All comments should start with a capital.
 - [ ] Convert Python code snippets into error files for cases where errors are provided as Python code snippets.
 - [ ] Proof-read the remaining half (approx.) of the website.
 - [ ] Go back to "needs improvement" examples from the spreadsheet.
