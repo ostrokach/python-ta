@@ -1,8 +1,8 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
-- [Week 11](#week-9-july-31---august-7)
-- [Week 10](#week-9-july-24---july-31)
+- [Week 11](#week-11-july-31---august-7)
+- [Week 10](#week-10-july-24---july-31)
 - [Week 9](#week-9-july-17---july-24)
 - [Week 8](#week-8-july-10---july-17)
 - [Week 7](#week-7-july-5---july-10)
@@ -14,19 +14,94 @@
 
 ----
 
-## Notes
+## Week 11 (July 31 - August 7)
 
-- Consistent documentation for all examples.
-  - Document function? Arguments? Return type?
-  - Maybe no return types, since using `@type` and `@rtype` is not often used in Python outside this course?
-- Have to document self?
+### Pull requests
 
----
+- [pyta-uoft/pyta#306](https://github.com/pyta-uoft/pyta/pull/306)
+- [pyta-uoft/website#67](https://github.com/pyta-uoft/website/pull/67)
 
-## Week 10 (July 31 - August 7)
+### Things to discuss
 
-- Duck typing (`float` instead of `int`) (see [Duck type compatibility](http://mypy.readthedocs.io/en/latest/duck_type_compatibility.html))
-- Variable / attribute types?
+#### Typehint-related
+
+- Is it really neccessary to document `self`?
+  1. This is not done in the docstrings of popular packages (checked `numpy`, `pandas`).
+  2. MyPy detects the correct type of `self` automatically.
+      - See [`W0233_non_parent_init.py`](https://github.com/ostrokach/pyta/blob/typehints/examples/pylint/W0233_non_parent_init.py)
+
+- OK to use generics with typehints?
+  - For example, a function takes in a list of lists and returns one of the elements?
+
+- `List[Any]` vs. `List[float]` vs. `List[int]`?
+  - When it's not clear that the example should apply to floats only?
+  - MyPy gives warning with `el: List[float] = [1.1, 2.1, 3.1]; running_sum = 0; for el in lst: running_sum += el`
+
+- Should I include typehints for variables and attributes?
+  - Get `Expression has type "Any"` errors (e.g.  [`E1136_unsubscriptable_object.py`](https://github.com/ostrokach/pyta/blob/typehints/examples/pylint/E1136_unsubscriptable_object.py), [`W0711_binary_op_exception.py`](https://github.com/ostrokach/pyta/blob/typehints/examples/pylint/W0711_binary_op_exception.py)) unless I set set `disallow_any = unimported, unannotated, decorated, generics` (note the missing `expr`) in the `mypy.ini` file.
+
+- Ran into [some issues](https://github.com/PyCQA/pylint/issues/867) with PyLint and typehints, seem to be fixed in PyLint 1.7.1.
+
+- Duplicate errors for Pylint and MyPy:
+
+    - [E0102](http://www.cs.toronto.edu/~david/pyta/#E0102)
+    - [E0103](http://www.cs.toronto.edu/~david/pyta/#E0103)
+    - [E0104](http://www.cs.toronto.edu/~david/pyta/#E0104)
+    - [E0108](http://www.cs.toronto.edu/~david/pyta/#E0108)
+    - [E1101](http://www.cs.toronto.edu/~david/pyta/#E1101)
+    - [E1102](http://www.cs.toronto.edu/~david/pyta/#E1102)
+    - [E0211](http://www.cs.toronto.edu/~david/pyta/#E0211)
+    - [W0222](http://www.cs.toronto.edu/~david/pyta/#W0222)
+    - ...
+
+- Would be nice if typehints were rendered in a different colour on the website.
+
+#### Other
+
+- Fixed `Unneccessary "else" after "return"` errors in several examples.
+  - e.g. `C0121_singleton_comparison.py`
+
+    ```python
+    def square(number: float) -> Optional[float]:
+      if number == None:  # Error on this line
+          return None
+      else:
+          return number**2
+    ```
+
+- Keep line length under 80 chars in examples?
+
+    ```python
+    id = 100  # Error on this line: Redefining built-in 'id'
+
+    def sum(a: float, b: float) -> float:  # Error on this line: Redefining built-in 'sum'
+        return a - b  # D'oh
+    ```
+
+- Changed one-line docstrings to contain opening and closing `"""` on the same line (ref. [PEP257](https://www.python.org/dev/peps/pep-0257/#one-line-docstrings)).
+
+- Period after title in docstrings (yes?).
+
+- *we should* vs. *you should* (*you should*?)
+
+- Errors provided as Python code blocks:
+
+    - E0241
+    - E0704
+    - W0211
+    - E0202
+    - C0112
+
+- Should all functions contain docstrings describing what they do?
+
+- Should all comments start with a capital?
+
+### To do
+
+- Convert Python code snippets into error files for cases where errors are provided as Python code snippets.
+- Proof-read the remaining half (approx.) of the website.
+- Go back to "needs improvement" examples from the spreadsheet.
+- Add descriptions for missing errors.
 
 ----
 
