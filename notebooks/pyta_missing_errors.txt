@@ -1,0 +1,64 @@
+Missing
+
+## Keep and document
+C0305	:trailing-newlines (C0305): *Trailing newlines*
+W0301	:unnecessary-semicolon (W0301): *Unnecessary semicolon*
+C0201	:consider-iterating-dictionary (C0201): *Consider iterating the dictionary directly instead of calling .keys()*
+E0107	:nonexistent-operator (E0107): *Use of the non-existent %s operator*
+W0221	:arguments-differ (W0221): *Arguments number differs from %s %r method*
+E0303	:invalid-length-returned (E0303): *__len__ does not return non-negative integer*
+C0321	:multiple-statements (C0321): *More than one statement on a single line*
+C0301	:line-too-long (C0301): *Line too long (%s/%s)*
+C0326	:bad-whitespace (C0326): *%s space %s %s %s*
+W0312	:mixed-indentation (W0312): *Found indentation with %ss instead of %ss*
+W0311	:bad-indentation (W0311): *Bad indentation. Found %s %s, expected %s*
+C0330	:bad-continuation (C0330): *Wrong %s indentation%s%s.*
+E1133	:not-an-iterable (E1133): *Non-iterable value %s is used in an iterating context*
+W0223	:abstract-method (W0223): *Method %r is abstract in class %r but is not overridden*
+C0304	:missing-final-newline (C0304): *Final newline missing*
+C0325	:superfluous-parens (C0325): *Unnecessary parens after %r keyword*
+E1123	:unexpected-keyword-arg (E1123): *Unexpected keyword argument %r in %s call*
+
+
+## Keep, don't document
+F0001	:fatal (F0001):
+I0001	:raw-checker-failed (I0001): *Unable to run raw checkers on built-in module %s*
+F0010	:parse-error (F0010): *error while code parsing: %s*
+F0002	:astroid-error (F0002): *%s: %s*
+F0202	:method-check-failed (F0202): *Unable to check methods signature (%s / %s)*
+
+## Investigate further
+W0106	:expression-not-assigned (W0106): *Expression "%s" is assigned to nothing*
+        - Seems to overlap with W0104 (which is already documented)
+        - Couldn't actually trigger this
+
+## Disable + ignore
+E0236	:invalid-slots-object (E0236): *Invalid object %r in __slots__, must contain only non empty strings*
+I0021	:useless-suppression (I0021): *Useless suppression of %s*
+E0110	:abstract-class-instantiated (E0110): *Abstract class %r with abstract methods instantiated*
+        - note: requires
+E0238	:invalid-slots (E0238): *Invalid __slots__ object*
+C0203	:bad-mcs-method-argument (C0203): *Metaclass method %s should have %s as first argument*
+C0204	:bad-mcs-classmethod-argument (C0204): *Metaclass class method %s should have %s as first argument*
+E0703	:bad-exception-context (E0703): *Exception context set to something which is not an exception, nor None*
+R0801	:duplicate-code (R0801): *Similar lines in %s files*
+I0013	:file-ignored (I0013): *Ignoring entire file*
+R0203	:no-staticmethod-decorator (R0203): *Consider using a decorator instead of calling staticmethod*
+R0202	:no-classmethod-decorator (R0202): *Consider using a decorator instead of calling classmethod*
+E1134	:not-a-mapping (E1134): *Non-mapping value %s is used in a mapping context*
+W1202	:logging-format-interpolation (W1202): *Use % formatting in logging functions and pass the % parameters as arguments*
+I0012	:locally-enabled (I0012): *Locally enabling %s (%s)*
+I0022	:deprecated-pragma (I0022): *Pragma "%s" is deprecated, use "%s" instead*
+C0302	:too-many-lines (C0302): *Too many lines in module (%s/%s)*
+I0011	:locally-disabled (I0011): *Locally disabling %s (%s)*
+I0010	:bad-inline-option (I0010): *Unable to consider inline option %r*
+E0012	:bad-option-value (E0012): *Bad option value %r*
+I0020	:suppressed-message (I0020): *Suppressed %s (from line %d)*
+E0011	:unrecognized-inline-option (E0011): *Unrecognized file option %r*
+E0240	:inconsistent-mro (E0240): *Inconsistent method resolution order for class %r*
+C0202	:bad-classmethod-argument (C0202): *Class method %s should have %s as first argument*
+E0237	:assigning-non-slot (E0237): *Assigning to attribute %r not defined in class slots*
+E0301	:non-iterator-returned (E0301): *__iter__ returns non-iterator*
+E1003	:bad-super-call (E1003): *Bad first argument %r given to super()*
+R1705   :no-else-return (R1705)
+C1801   :len-as-condition
