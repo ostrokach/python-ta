@@ -25,24 +25,28 @@ From previous week:
 - [pyta-uoft/website#67](https://github.com/pyta-uoft/website/pull/67)
   - No changes requested...
 
-Week 12
-- [pyta-uoft/website#68](https://github.com/pyta-uoft/website/pull/68)
-
-Travis CI
-- [pyta-uoft/website#69](https://github.com/pyta-uoft/website/pull/69)
-
 Added errors that are new to PyLint 1.7.2 to the [spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983).
 - Added your toronto.edu email to the list of people who can edit, but would probably need your gmail address instead?
 - Can't make the link editable because this README is public...
+- **W0106**: Document as well?
 
-**W0106**: Document as well?
+    ```python
+    lst = [1, 2, 3]
+    lst.append(4), "This should not be here"  # Eror on this line
+    ```
 
-```python
-lst = [1, 2, 3]
-lst.append(4), "This should not be here"  # Eror on this line
-```
+Week 12
+- Only changes so far is for Travis CI to pass.
+- [pyta-uoft/website#68](https://github.com/pyta-uoft/website/pull/68)
+
+Travis CI
+- A bug in remark-lint is leading to one failed test.
+- [pyta-uoft/website#69](https://github.com/pyta-uoft/website/pull/69)
+
 
 ### Work in progress
+
+Just keep adding this to Week 12?
 
 - [ ] Use *we should* instead of *you should*.
 - [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
