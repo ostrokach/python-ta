@@ -1,6 +1,7 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
+- [Week 11](#week-12-august-7---august-14)
 - [Week 11](#week-11-july-31---august-7)
 - [Week 10](#week-10-july-24---july-31)
 - [Week 9](#week-9-july-17---july-24)
@@ -11,6 +12,36 @@
 - [Week 3](#week-3-june-5---june-12)
 - [Week 2](#week-2-may-28---june-5)
 - [Week 1](#week-1-may-22---may-28)
+
+---
+
+## Week 12 (August 7 - August 14)
+
+### Pull requests
+
+From previous week:
+- [pyta-uoft/pyta#306](https://github.com/pyta-uoft/pyta/pull/306)
+  - Made the requiested changes.
+- [pyta-uoft/website#67](https://github.com/pyta-uoft/website/pull/67)
+  - No changes requested...
+
+Week 12
+- [pyta-uoft/website#68](https://github.com/pyta-uoft/website/pull/68)
+
+Travis CI
+- [pyta-uoft/website#69](https://github.com/pyta-uoft/website/pull/69)
+
+
+### Work in progress
+
+- [ ] we should vs. you should (you should?)
+- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112)
+- [ ] All functions should contain docstrings describing what they do?
+- [ ] All comments should start with a capital?
+- [ ] Convert Python code snippets into error files for cases where errors are provided as Python code snippets.
+- [ ] Proof-read the remaining half (approx.) of the website.
+- [ ] Go back to "needs improvement" examples from the spreadsheet.
+- [ ] Add descriptions for missing errors.
 
 ----
 
