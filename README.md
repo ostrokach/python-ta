@@ -1,7 +1,8 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
-- [Week 11](#week-12-august-7---august-14)
+- [Week 13](#week-13-august-14---august-21)
+- [Week 12](#week-12-august-7---august-14)
 - [Week 11](#week-11-july-31---august-7)
 - [Week 10](#week-10-july-24---july-31)
 - [Week 9](#week-9-july-17---july-24)
@@ -15,7 +16,16 @@
 
 ---
 
-- Remove `gh-pages`.
+## Week 13 (August 14 - August 21)
+
+### Pull requests
+
+- [Travis CI tests](https://github.com/pyta-uoft/website/pull/69)
+  1. Removed `gh-pages`.
+  2. Fixed list markdown so that tests pass.
+    - See PR message for more info.
+
+
 - Explore in depth `W0106`
 - [https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments)
   - Can have links like: [target][]
