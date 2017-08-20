@@ -15,6 +15,14 @@
 
 ---
 
+- Remove `gh-pages`.
+- Explore in depth `W0106`
+- [https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments)
+  - Can have links like: [target][]
+
+
+---
+
 ## Week 12 (August 7 - August 14)
 
 ### Pull requests
