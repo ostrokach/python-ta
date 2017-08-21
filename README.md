@@ -18,17 +18,47 @@
 
 ## Week 13 (August 14 - August 21)
 
+### Work in progress
+
+Just keep adding this to Week 12?
+
+- [ ] Add descriptions for missing errors.
+- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
+- [ ] Use *we should* instead of *you should*.
+- [ ] All functions should contain docstrings describing what they do.
+- [ ] All comments should start with a capital.
+- [ ] Proof-read the remaining half (approx.) of the website.
+- [ ] Go back to "needs improvement" examples from the spreadsheet.
+- Use [https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).
+
 ### Pull requests
 
 - [Travis CI tests](https://github.com/pyta-uoft/website/pull/69)
   1. Removed `gh-pages`.
   2. Fixed list markdown so that tests pass.
     - See PR message for more info.
+- [PyTA Week 13](https://github.com/pyta-uoft/pyta/pull/310)
+  - Remove TypeVar (just use `int`)
+  - Add files to hold examples for new errors
+- [Website Week 13](https://github.com/pyta-uoft/website/pull/70)
+  - Remove TypeVar (just use `int`)
+  - Start adding descriptions of new error messages
+- Examine `W104` (pointless statement) vs `W106` (expression not assigned)
+  - https://github.com/PyCQA/pylint/blob/master/pylint/checkers/base.py#L769
 
-
-- Explore in depth `W0106`
-- [https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments)
-  - Can have links like: [target][]
+      ```
+      if (isinstance(expr, (astroid.Yield, astroid.Await, astroid.Call)) or
+              (isinstance(node.parent, astroid.TryExcept) and
+               node.parent.body == [node])):
+          return
+      if any(expr.nodes_of_class(astroid.Call)):
+          self.add_message('expression-not-assigned', node=node,
+                           args=expr.as_string())
+      else:
+          self.add_message('pointless-statement', node=node)
+      ```
+- Can't edit website wiki
+  - Added notes to the [wiki of my fork](https://github.com/ostrokach/website/wiki) instead:
 
 
 ---
@@ -62,18 +92,6 @@ Travis CI
 - [pyta-uoft/website#69](https://github.com/pyta-uoft/website/pull/69)
 
 
-### Work in progress
-
-Just keep adding this to Week 12?
-
-- [ ] Use *we should* instead of *you should*.
-- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
-- [ ] All functions should contain docstrings describing what they do.
-- [ ] All comments should start with a capital.
-- [ ] Convert Python code snippets into error files for cases where errors are provided as Python code snippets.
-- [ ] Proof-read the remaining half (approx.) of the website.
-- [ ] Go back to "needs improvement" examples from the spreadsheet.
-- [ ] Add descriptions for missing errors.
 
 ----
 
