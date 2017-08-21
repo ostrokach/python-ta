@@ -18,19 +18,6 @@
 
 ## Week 13 (August 14 - August 21)
 
-### Work in progress
-
-Just keep adding this to Week 12?
-
-- [ ] Add descriptions for missing errors.
-- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
-- [ ] Use *we should* instead of *you should*.
-- [ ] All functions should contain docstrings describing what they do.
-- [ ] All comments should start with a capital.
-- [ ] Proof-read the remaining half (approx.) of the website.
-- [ ] Go back to "needs improvement" examples from the spreadsheet.
-- Use [feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).
-
 ### Pull requests
 
 - [Travis CI tests](https://github.com/pyta-uoft/website/pull/69)
@@ -60,6 +47,16 @@ Just keep adding this to Week 12?
 - Can't edit website wiki.
   - Added notes to the [wiki of my fork](https://github.com/ostrokach/website/wiki) instead.
 
+### Work in progress
+
+- [ ] Add descriptions for missing errors.
+- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
+- [ ] Use *we should* instead of *you should*.
+- [ ] All functions should contain docstrings describing what they do.
+- [ ] All comments should start with a capital.
+- [ ] Proof-read the remaining half (approx.) of the website.
+- [ ] Go back to "needs improvement" examples from the spreadsheet.
+- Use [feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).
 
 ---
 
