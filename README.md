@@ -29,7 +29,7 @@ Just keep adding this to Week 12?
 - [ ] All comments should start with a capital.
 - [ ] Proof-read the remaining half (approx.) of the website.
 - [ ] Go back to "needs improvement" examples from the spreadsheet.
-- Use [https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).
+- Use [feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).
 
 ### Pull requests
 
@@ -38,15 +38,15 @@ Just keep adding this to Week 12?
   2. Fixed list markdown so that tests pass.
     - See PR message for more info.
 - [PyTA Week 13](https://github.com/pyta-uoft/pyta/pull/310)
-  - Remove TypeVar (just use `int`)
-  - Add files to hold examples for new errors
+  - Remove TypeVar (just use `int`).
+  - Add files to hold examples for new errors.
 - [Website Week 13](https://github.com/pyta-uoft/website/pull/70)
-  - Remove TypeVar (just use `int`)
-  - Start adding descriptions of new error messages
-- Examine `W104` (pointless statement) vs `W106` (expression not assigned)
+  - Remove TypeVar (just use `int`).
+  - Start adding descriptions of new error messages.
+- Examine `W104` (pointless statement) vs `W106` (expression not assigned).
   - https://github.com/PyCQA/pylint/blob/master/pylint/checkers/base.py#L769
 
-      ```
+      ```python
       if (isinstance(expr, (astroid.Yield, astroid.Await, astroid.Call)) or
               (isinstance(node.parent, astroid.TryExcept) and
                node.parent.body == [node])):
@@ -57,8 +57,8 @@ Just keep adding this to Week 12?
       else:
           self.add_message('pointless-statement', node=node)
       ```
-- Can't edit website wiki
-  - Added notes to the [wiki of my fork](https://github.com/ostrokach/website/wiki) instead:
+- Can't edit website wiki.
+  - Added notes to the [wiki of my fork](https://github.com/ostrokach/website/wiki) instead.
 
 
 ---
