@@ -16,6 +16,56 @@
 
 ---
 
+- Remove "Syntax Error (E0001)" 3e "Use of an undefined operator" because we now have `Nonexistent operator (E0107)`.
+
+
+----
+
+## Week 14 (August 21 - August 28)
+
+C0330 is wrong marking the following as correct:
+
+```python
+def print_address(
+    recipient: str,
+    street: str,  # Error on this line: Wrong indentation
+    city: str,  # Error on this line: Wrong indentation
+    province: str,  # Error on this line: Wrong indentation
+    country: str) -> None:  # Error on this line: Wrong indentation
+    """Print the provided address in a clean format."""
+    ...
+```
+
+and the following as incorrect:
+
+```python
+def print_address(
+      recipient: str,
+      street: str,  # Error on this line: Wrong indentation
+      city: str,  # Error on this line: Wrong indentation
+      province: str,  # Error on this line: Wrong indentation
+      country: str) -> None:  # Error on this line: Wrong indentation
+    """Print the provided address in a clean format."""
+    ...
+```
+
+See: https://www.python.org/dev/peps/pep-0008/#indentation.
+and: https://github.com/PyCQA/pylint/issues/741
+
+---
+
+### Work in progress
+
+- [x] Add descriptions for missing errors.
+- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
+- [ ] Use *we should* instead of *you should*.
+- [ ] All functions should contain docstrings describing what they do.
+- [ ] All comments should start with a capital.
+- [ ] Proof-read the remaining half (approx.) of the website.
+- [ ] Go back to "needs improvement" examples from the spreadsheet.
+- Use [feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).
+
+
 ## Week 13 (August 14 - August 21)
 
 ### Pull requests
