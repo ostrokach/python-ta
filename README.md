@@ -31,7 +31,7 @@
 
 ----
 
-C0330 is wrong marking the following as correct:
+C0330 is (erroneously) tagging the following style as correct:
 
 ```python
 def print_address(
@@ -44,7 +44,7 @@ def print_address(
     ...
 ```
 
-and the following as incorrect:
+and the following style as incorrect:
 
 ```python
 def print_address(
@@ -58,8 +58,8 @@ def print_address(
 ```
 
 **See**:
-- https://www.python.org/dev/peps/pep-0008/#indentation.
-- https://github.com/PyCQA/pylint/issues/741
+- <https://www.python.org/dev/peps/pep-0008/#indentation>
+- <https://github.com/PyCQA/pylint/issues/741>
 
 
 ## Week 13 (August 14 - August 21)
