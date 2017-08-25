@@ -21,13 +21,17 @@
 ### Work in progress
 
 - [x] Add descriptions for missing errors.
-- [ ] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
-- [ ] Use *we should* instead of *you should*.
+- [x] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
+- [x] Use *we should* instead of *you should*.
+
 - [ ] All functions should contain docstrings describing what they do.
 - [ ] All comments should start with a capital.
+
 - [ ] Proof-read the remaining half (approx.) of the website.
 - [ ] Go back to "needs improvement" examples from the spreadsheet.
+
 - Use [feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).
+  - Test: [week-1-may-22---may-28][]
 
 ----
 
