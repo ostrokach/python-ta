@@ -30,8 +30,8 @@
 - [ ] Proof-read the remaining half (approx.) of the website.
 - [ ] Go back to "needs improvement" examples from the spreadsheet.
 
-- Use [feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).
-  - Test: [week-1-may-22---may-28][]
+- ~Use [feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).~
+  - Does not work. For example: [week-1-may-22---may-28], [week-1-may-22---may-28][].
 
 ----
 
