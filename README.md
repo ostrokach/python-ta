@@ -1,6 +1,7 @@
 # 2017 Content Developer for PythonTA
 
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1aNX6t_Edwqn9f9Y7gm8qCJeRuWyOPLvxAu9PF7TOOR8/edit#gid=1309916983)
+- [Week 14](#week-14-august-21---august-28)
 - [Week 13](#week-13-august-14---august-21)
 - [Week 12](#week-12-august-7---august-14)
 - [Week 11](#week-11-july-31---august-7)
