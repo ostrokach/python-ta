@@ -21,12 +21,18 @@
 ### Work in progress
 
 - [x] Add descriptions for missing errors.
+  - https://github.com/pyta-uoft/pyta/pull/311
+  - https://github.com/pyta-uoft/website/pull/70
 - [x] Errors provided as Python code blocks (E0241, E0704, W0211, E0202, C0112).
+  - https://github.com/pyta-uoft/pyta/pull/312
+  - https://github.com/pyta-uoft/website/pull/71
 - [x] Use *we should* instead of *you should*.
 - [x] All functions should contain docstrings describing what they do.
 - [x] All comments should start with a capital.
 - [x] Proof-read the remaining half (approx.) of the website.
-- [ ] Go back to "needs improvement" examples from the spreadsheet.
+- [x] Go back to "needs improvement" examples from the spreadsheet.
+  - https://github.com/pyta-uoft/pyta/pull/313
+  - https://github.com/pyta-uoft/website/pull/72
 - ~Use [feature-fragments](https://css-tricks.com/choosing-right-markdown-parser/#feature-fragments) for cross-referencing errors. (e.g. [target][]).~
   - Does not work. For example: [week-1-may-22---may-28], [week-1-may-22---may-28][].
 
